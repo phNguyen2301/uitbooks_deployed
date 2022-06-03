@@ -1,0 +1,41 @@
+.categories-container {
+    .categories-main-container {
+        .categories-nav-container {
+            .categories-nav {
+                .categories-nav-title {
+                    background-color: rgba(16, 108, 192, 0.1);
+                }
+                .categories-nav-main {
+                    .list-group-item, .form-check {
+                        .form-check-label {
+                            .form-check-input {
+                                cursor: pointer; 
+                            }
+                        }
+                    }
+                }
+            }
+            .categories-author {
+                .categories-author-title {
+                    background-color: rgba(16, 108, 192, 0.1);
+                }
+            } 
+            .categories-price {
+                .categories-price-title {
+                    background-color: rgba(16, 108, 192, 0.1);
+                }
+            } 
+            .categories-publisher {
+                .categories-publisher-title {
+                    background-color: rgba(16, 108, 192, 0.1);
+                }
+            }
+        }
+        .categories-main {
+            .categories-main-title {
+                background-color: #106cc0;
+                border-radius: 5px 5px 0px 0px;
+            }
+        }
+    }
+}

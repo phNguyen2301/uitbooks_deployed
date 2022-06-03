@@ -1,0 +1,144 @@
+.datatable {
+  height: 600px;
+  padding: 20px;
+  // width: 100%;
+
+  .datatableTitle {
+    width: 100%;
+    font-size: 24px;
+    font-weight: 900;
+    color: rgb(16, 12, 12);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .link {
+      text-decoration: none;
+      color: #fff;
+      background-color: #106CC0;
+      font-size: 16px;
+      font-weight: 400;
+      border: 1px solid green;
+      padding: 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
+      .icon-book-new {
+        font-size: 22px;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .cellWithImg {
+    display: flex;
+    align-items: center;
+
+    .cellImg {
+      width: 40px;
+      height: 40px;
+      // border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
+    }
+  }
+
+  .cellWithStatus {
+    padding: 5px;
+    border-radius: 5px;
+
+    &.active {
+      background-color: rgba(0, 128, 0, 0.05);
+      color: green;
+    }
+
+    &.pending {
+      background-color: rgba(255, 217, 0, 0.05);
+      color: goldenrod;
+    }
+
+    &.passive {
+      background-color: rgba(255, 0, 0, 0.05);
+      color: crimson;
+    }
+  }
+
+  .cellAction {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .viewButton {
+      color: #52EC7D;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .deleteButton {
+      font-size: 26px;
+      color: crimson;
+      cursor: pointer;
+    }
+
+    .reviewsButton {
+      font-size: 26px;
+      cursor: pointer;
+      color: #097430
+    }
+  }
+
+  .datagrid {
+    -ms-overflow-style: none;
+    /* khai báo sử dụng Internet Explorer, Edge */
+    scrollbar-width: none;
+    /* sử dụng Firefox */
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .datagrid::-webkit-scrollbar {
+    display: none;
+    /* cho Chrome, Safari, and Opera */
+  }
+
+}
+
+.modal {
+  .modal-dialog {
+    min-width: 60vw;
+    .modal-content {
+      .modal-body {
+        .form {
+          .book-comment-others {
+            .book-comment-user {
+              .book-comment-avatar {
+                color: #106cc0;
+              }
+
+              .book-comment-container {
+                .book-comment-content {
+                  margin-right: 50px;
+                  text-align: justify;
+                }
+              }
+            }
+
+            .book-comment-container {
+              .book-comment-userinfo {
+                .book-comment-delete-icon {
+                  font-size: 50px;
+                  color: #c01010;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

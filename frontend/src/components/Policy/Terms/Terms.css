@@ -1,0 +1,25 @@
+.terms-container {
+    margin-top: 20px;
+}
+
+.terms-title {
+    display: flex;
+    padding: 0 0 10px 0;
+    border-bottom: solid 2px #106CC0;
+}
+
+.terms-title p {
+    font-weight: 500;
+    font-size: 30px;
+    margin: auto 20px;
+}
+
+.terms-title img {
+    width: 50px;
+}
+
+.terms-content {
+    margin-top: 10px;
+    font-size: 18px;
+    text-align: justify;
+}

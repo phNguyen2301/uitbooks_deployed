@@ -1,0 +1,289 @@
+.footer-subcription {
+    margin-top: 10px;
+    padding: 8px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #c5c5c5;
+}
+
+.footer-subcription p {
+    margin: 0 1rem;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 35px;
+}
+
+.footer-subcription-heading {
+    line-height: 38px;
+    font-size: 18px;
+}
+
+.footer-subcription form {
+    display: flex;
+}
+
+.footer-subcription input {
+    width: 30vw;
+    margin: 0 10px;
+}
+
+.footer-container {
+    background-color: white;
+    padding: 1rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+/* Links and Credit */
+.footer-link-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-link-list .footer-link-items {
+    width: max-content;
+}
+
+.footer-links {
+    width: 100%;
+    max-width: 1500px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-link-wrapper {
+    display: flex;
+}
+
+.footer-link-items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 16px;
+    text-align: left;
+    // width: 160px;
+    box-sizing: border-box;
+}
+
+.footer-link-items h2 {
+    font-size: 24px;
+}
+
+.footer-link-items:last-child {
+    width: 310px;
+    pointer-events: none;
+}
+
+.footer-link-items:last-child>a:nth-child(3) {
+    font-weight: 700;
+}
+
+.footer-link-items:last-child>img {
+    display: block;
+    margin: 10px auto;
+}
+
+.footer-link-items>h2 {
+    color: #1e266d;
+    margin-bottom: 16px;
+    cursor: default;
+}
+
+.footer-link-items a {
+    color: #3b3c54;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+}
+
+.footer-link-items a:hover {
+    color: #2c31cf;
+    text-decoration: underline;
+    transition: 0.3s ease-out;
+}
+
+.payment {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+
+/* Logo and Social Networks */
+
+.footer-icons-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0;
+    max-width: 35vw;
+}
+
+.uitbooks-logo-large {
+    max-width: 80px;
+    margin-right: 10px;
+}
+
+.uitbooks {
+    width: 250px;
+}
+
+// .footer-icons-items a {
+//     margin-right: 35px;
+// }
+
+.footer-info {
+    margin-top: 10px;
+    text-align: justify;
+}
+
+.footer-info a {
+    text-decoration: none;
+    margin-right: 0;
+    font-weight: 500;
+}
+
+.social-icons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-evenly;
+    row-gap: 10px;
+}
+
+.download {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-around;
+}
+
+.download img {
+    width: 12vw;
+}
+
+.contact div {
+    display: flex;
+}
+
+.contact div p {
+    margin-left: 5px;
+}
+
+.website-rights {
+    display: block;
+    text-align: center;
+}
+
+/* Copyrights */
+.social-icon-link {
+    color: #000;
+    font-size: 24px;
+}
+
+.social-media {
+    width: 100%;
+    background-color: #C4C4C4;
+    color: #000;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 0;
+}
+
+@media screen and (max-width: 960px) {
+    .footer-links {
+        padding-top: 0.5rem;
+    }
+
+    .footer-subcription {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-subcription form {
+        flex-direction: column;
+    }
+
+    .footer-subcription input {
+        width: 70vw;
+        margin: 10px 0;
+    }
+
+    .footer-subcription button {
+        width: 30vw;
+        align-self: center;
+        margin: 10px 0;
+    }
+
+    .footer-link-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .download img {
+        width: 15vw;
+    }
+
+    .footer-link-items {
+        align-items: center;
+    }
+
+    .footer-link-list {
+        align-items: center;
+    }
+
+    .contact div {
+        justify-content: center;
+    }
+
+    .footer-icons-wrapper {
+        max-width: 40vw;
+    }
+
+    .payment {
+        display: grid;
+        justify-items: center;
+        grid-template-columns: auto auto;
+        grid-gap: 10px 10px;
+
+    }
+
+    @media screen and (max-width: 700px) {
+        .footer-links {
+            flex-direction: column;
+        }
+
+        .footer-link-wrapper {
+            max-width: 100vw;
+        }
+
+        .footer-icons-wrapper {
+            max-width: 90vw;
+            align-self: center;
+        }
+
+        .uitbooks-logo-large {
+            display: flex;
+            margin: auto;
+        }
+
+        .uitbooks {
+            display: flex;
+            margin: 8px auto;
+        }
+
+        .download img {
+            width: 35vw;
+        }
+
+        .contact-us {
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+}

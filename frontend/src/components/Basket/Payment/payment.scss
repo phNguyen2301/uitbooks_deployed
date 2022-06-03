@@ -1,0 +1,120 @@
+.methodPayment{
+    background-color: #D9EEEF;
+    padding: 20px 40px;
+    &__title{
+        font-size: 25px;
+        font-weight: 600;
+        color: #106CC0;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    &__description{
+        font-weight: 500;
+    }
+    &__option{
+        &__row{
+            position: relative;
+            display: flex;
+            align-items: center;
+            // justify-content: space-between;
+            & input{
+                width: 20px;
+                height: 20px;
+                margin-right: 20px;
+            }
+            &__img{
+                align-self: flex-end;
+                position: absolute;
+                right: 0;
+                img{
+                    width: 35px;
+                    margin-left: 20px;
+                }
+            }
+             
+        }
+
+    }
+    &__button{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+        transform: all 0.5;
+        &__btn{
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            background-color: #EF0000;
+            color: #fff;
+            width: 100px;
+            height: 40px;
+            font-weight: 500;
+            &:hover{
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+    }
+}
+
+.info-order{
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 20px 20px;
+    &__title{
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        & i{
+            font-size: 25px;
+            color: #106CC0;
+            margin-right: 15px;
+        }
+        &__name{
+            color: #106CC0;
+            font-size: 20px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+    }
+    &__product{
+        display: flex;
+        align-items: center;
+        & img{
+            margin-right: 10px;
+            width: 60px;
+        }
+        &__information{
+            &__name{
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+    }
+    &__product ~ &__product{
+        margin-top: 10px;
+    }
+    &__money{
+        &__row{
+            
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &__row ~ &__row{
+            margin-top: 10px;
+        }
+    }
+    &__bill{
+        display: flex;
+        justify-content: space-between;
+        &__name{
+            font-weight: 600;
+        }
+        &__value{
+            color: #EF0000;
+            font-weight: 700;
+        }
+    }
+}

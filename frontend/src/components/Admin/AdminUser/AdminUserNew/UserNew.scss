@@ -1,0 +1,37 @@
+.admin-user-new-form-infor {
+    .admin-form-infor-heading {
+        margin: 30px 0 0 30px;
+    }
+
+    .admin-user-new-form-infor-body {
+        margin-left: 20px;
+
+        .add-user-label {
+            width: 100%;
+            font-weight: 500;
+        }
+
+        .btn {
+            border: none;
+            padding: 6px;
+            color: #fff;
+            min-width: 56px;
+        }
+
+        .btn-submit {
+            background-color: #106CC0;
+            margin-right: 30px;
+        }
+
+        .btn-reset {
+            background-color: #FF9933;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+    }
+}

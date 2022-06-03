@@ -1,0 +1,33 @@
+.container-canceled-empty {
+    text-align: center;
+}
+
+.img-cancled-empty {
+    height: 300px;
+    width: 300px;
+}
+
+    .book-infor {
+        .book-infor-detail-quantity {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .book-infor-total-price-2 {
+                margin-right: 30px;
+            }
+        }
+    }
+
+    .book-infor-total-2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: 30px;
+        margin-top: 2px;
+        font-size: 14px;
+
+        button {
+            min-width: 100px;
+        }
+    }

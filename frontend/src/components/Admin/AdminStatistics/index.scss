@@ -1,0 +1,12 @@
+.AdminStatistics{
+  padding: 20px 20px;
+    .widgets{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+    .charts{
+      margin-bottom: 50px;
+    }
+}

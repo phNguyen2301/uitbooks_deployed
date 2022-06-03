@@ -1,0 +1,42 @@
+.favorites-nav {
+
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px 10px 0px;
+    border-bottom: 1px solid #00BABA;
+    margin-bottom: 10px;
+
+
+    &-product {
+        a {
+            text-decoration: none;
+            color: #000;
+
+            .active{
+                color: #00BABA;
+            }
+
+        }
+
+        border-right: 1px solid #00BABA;
+        text-align: center;
+    
+    }
+
+    &-post {
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+        text-align: center;
+    }
+
+
+    .active {
+        color: #00BABA;
+        font-weight: bold;
+        border-bottom: 3px solid #00BABA;
+    }
+    
+    
+}

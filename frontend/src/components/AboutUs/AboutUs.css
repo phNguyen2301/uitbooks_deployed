@@ -1,0 +1,42 @@
+.about-us-container {
+    margin-top: 20px;
+}
+
+.about-us-title {
+    display: flex;
+    padding: 0 0 10px 0;
+    border-bottom: solid 2px #555555;
+}
+
+.about-us-title p {
+    font-weight: 500;
+    font-size: 30px;
+    margin: auto 20px;
+}
+
+.about-us-title img {
+    width: 50px;
+}
+
+.about-us-content {
+    margin-top: 10px;
+    font-size: 18px;
+    text-align: justify;
+}
+
+.about-us-contact {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.about-us-contact div {
+    margin-top: 8px;
+}
+
+.about-us-contact img {
+    margin-right: 10px;
+}
+
+.about-us-contact a {
+    text-decoration: none;
+}

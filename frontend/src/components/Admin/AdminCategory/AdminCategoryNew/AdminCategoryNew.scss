@@ -1,0 +1,41 @@
+.form-wrapper {
+    border: 1px solid #106CC0;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 20px;
+
+    .form-group {
+        margin-bottom: 16px;
+        font-weight: 600;
+        font-size: 14px;
+        outline: none;
+
+        &-label {
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            outline: none;
+            border: 1px solid #106CC0;
+            border-radius: 5px;
+        }
+    }
+
+    .btn {
+        border: none;
+        padding: 6px;
+        color: #fff;
+        min-width: 56px;
+    }
+
+    .btn-submit {
+        background-color: #106CC0;
+        margin-right: 30px;
+    }
+
+    .btn-reset {
+        background-color: #FF9933;
+    }
+}

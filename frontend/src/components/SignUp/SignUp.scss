@@ -1,0 +1,143 @@
+.img-welcome {
+    width: 70%;
+}
+
+.signup {
+    // height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container-img {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.container-btn-signup {
+    text-align: right;
+
+    .btn-signup {
+        background-color: #106CC0;
+        color: white;
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .btn-signup-icon {
+            font-size: 20px;
+        }
+    }
+   
+
+    .btn-signup:hover {
+        color: #fff;
+        opacity: 0.8;
+    } 
+}
+
+.container-logo {
+    display: flex;
+}
+
+.logo {
+    width: 80px;
+}
+
+.logo-name {
+    font-weight: bold;
+    font-size: 30px;
+    color: #106CC0;
+    font-weight: 700;
+    margin-left: 20px;
+}
+
+.signUp__form {
+    margin-top: 10px;
+    // max-height: 70vh;
+
+    .input-group-text {
+        border: 1px solid rgba(0, 0, 0, 0.568);
+        // color: #fff;
+
+    }
+
+    .img-preview {
+        width: 100px;
+        height: 100px;
+    }
+
+    .input-group-text-1 {
+        border: 1px solid rgba(0, 0, 0, 0.568);
+        //color: #fff;
+    }
+}
+
+.form-signup {
+    background-color: #F6F6F6;
+    width: 600px;
+    // max-height: 600px;
+    // margin-top: 20px;
+
+    .signUp__title {
+        color: #106CC0;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .btn-signup-footer {
+        background-color: #27A811;
+        color: white;
+        width: 120px;
+    }
+
+    .btn-signup-footer:hover {
+        color: #fff;
+        opacity: 0.8;
+    }
+
+    .container-input {
+        margin-right: 20px;
+        width: fit-content;
+
+        .input-text {
+            color: #c01010;
+            .input-group {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                .input-image-file {
+                    cursor: pointer;
+                    font-weight: 600;
+
+                    .input-image-icon {
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+    }
+
+    .input-icon {
+        background-color: white;
+    }
+
+    .img-confirm-pass {
+        width: 16px;
+        height: 16px;
+    }
+
+    .switch-signin {
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .switch-signin:hover {
+        outline: none;
+    }
+
+}

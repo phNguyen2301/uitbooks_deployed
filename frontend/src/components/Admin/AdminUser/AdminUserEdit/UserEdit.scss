@@ -1,0 +1,20 @@
+.admin-user-edit-form-infor {
+    .admin-form-infor-heading {
+        margin: 30px 0 0 30px;
+    }
+
+    .admin-user-edit-form-infor-body {
+        margin-left: 20px;
+
+        .edit-user-label {
+            width: 100%;
+            font-weight: 500;
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+    }
+}

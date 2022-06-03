@@ -1,0 +1,212 @@
+.my-order-content-booked {
+    border: 1px solid #00BABA;
+    margin-right: 30px;
+    padding: 10px;
+    max-width: 650px;
+    min-width: 350px;
+
+    .book-infor {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .book-infor-img {
+            width: auto;
+        }
+
+        .book-infor-detail {
+            h6 {
+                color: #106CC0;
+                font-size: 18px;
+            }
+
+            &-author {
+                font-size: 14px;
+            }
+
+            &-price {
+                font-size: 14px;
+
+                &-old {
+                    display: inline-block;
+                    margin-right: 20px;
+                    text-decoration: line-through;
+                }
+
+                &-new {
+                    color: red;
+                }
+            }
+
+            &-quantity {
+                font-weight: 600;
+            }
+        }
+    }
+
+    .book-delivery {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        padding-left: 30px;
+        color: #00BABA;
+        border-bottom: 1px solid #ccc;
+
+        &-icon {
+            font-size: 20px;
+            display: inline-block;
+            padding-right: 20px;
+        }
+
+        span {
+            font-size: 14px;
+        }
+    }
+
+    .book-delivery-bill {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #ccc;
+
+        .book-total-bill {
+            font-size: 16px;
+
+            &-title {
+                font-weight: 600;
+                display: inline-block;
+                margin-right: 3px;
+            }
+
+            &-price {
+                color: red;
+            }
+        }
+
+        .book-delivery-confirm {
+            color: #000;
+            background-color: #79e5e5;
+            margin-bottom: 10px;
+            margin-right: 20px;
+        }
+    }
+
+    .book-date-delivery {
+        font-size: 14px;
+        margin: 0;
+        margin-top: 10px;
+
+    }
+}
+
+
+
+.todo-timeline {
+    border: #0FA3B1 1px solid;
+    // margin-top: 65px;
+    padding-top: 20px;
+    max-width: 650px;
+    min-width: 350px;
+    background-color: #e8eef4;
+
+    .timeline-text {
+        display: flex;
+    }
+
+    .todo-title {
+        display: flex;
+        justify-content: space-around;
+        font-size: 16px;
+        color: #0FA3B1;
+        font-weight: bold;
+        border-bottom: 1px solid rgb(228, 222, 222);
+
+        span {
+            color: red;
+            font-weight: normal;
+        }
+    }
+
+    .v-timeline {
+        margin-top: 10px;
+
+        ul {
+            position: relative;
+        }
+
+        li {
+            list-style-type: none;
+            padding: 0 0 10px;
+            position: relative;
+            overflow: hidden;
+
+            .top-bold-label {
+                font-size: 14px;
+                font-weight: 500;
+                display: flex; //thử
+            }
+
+            .mid-paragraph {
+                font-size: 18px;
+            }
+
+            .bottom-link {
+                color: #000;
+                font-weight: 400;
+                font-size: 16px;
+            }
+        }
+
+        .pl-30 {
+            padding-left: 24px;
+        }
+
+        .v-timeline-icon {
+            &:before {
+                content: ' ';
+                height: 16px; //sửa kích thước của iocn
+                position: absolute;
+                top: 5px;
+                left: 0;
+                width: 16px;
+                border-radius: 50%;
+                background: #0FA3B1;
+                // box-sizing: inherit;
+            }
+
+            &:after {
+                content: ' ';
+                border-left: 2px solid #0FA3B1;
+                display: inline-block;
+                position: absolute;
+                left: 7px; //sửa vị trí của line
+                height: 400px;
+                z-index: 400;
+                top: 30px;
+                // box-sizing: inherit;
+            }
+
+            &.v-last {
+                &:before {
+                    background: #7b8479;
+                }
+
+                &:after {
+                    height: 0;
+                }
+            }
+
+            &.v-not {
+                &:before {
+                    color: #0FA3B1;
+                }
+            }
+
+            &.v-line-color {
+                &:after {
+                    border-left: 2px dashed #6e746c;
+                }
+            }
+        }
+    }
+}

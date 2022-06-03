@@ -1,0 +1,43 @@
+.not-found-container {
+    background-size: cover;
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.85)), url('https://drive.google.com/uc?id=18cs9fAHfqRyFZuRi1NlnrYnvxufS0SLK');
+    background-repeat: no-repeat;
+
+    .row {
+        margin: 15px;
+
+        .error-left {
+            .error-content {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .error-title {
+                color: #106CC0;
+            }
+
+            .des {
+                margin-top: 10px;
+            }
+
+            .finding-img {
+                width: 80px;
+                margin-bottom: 18px;
+            }
+        }
+
+        .error-right {
+            .error-img {
+                text-align: center;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

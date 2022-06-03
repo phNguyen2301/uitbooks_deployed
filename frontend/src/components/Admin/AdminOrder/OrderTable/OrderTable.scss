@@ -1,0 +1,102 @@
+.datatable {
+  height: 600px;
+  padding: 20px;
+
+  .datatableTitle {
+    width: 100%;
+    font-size: 24px;
+    color: gray;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .link {
+      text-decoration: none;
+      // color: green;
+      font-size: 16px;
+      font-weight: 400;
+      border: 1px solid green;
+      padding: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+
+  .css-1jbbcbn-MuiDataGrid-columnHeaderTitle {
+    color: #106CC0;
+    font-weight: 700;
+    text-align: right !important;
+  }
+
+  .cellWithStatus {
+    padding: 5px;
+    border-radius: 5px;
+    // border: 1px solid #5b718694;
+    text-align: center;
+
+
+    &.Shipped {
+      background-color: rgba(0, 128, 0, 0.1);
+      color: green;
+      // width: 125px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+
+    &.Processing {
+      background-color: rgba(255, 217, 0, 0.1);
+      color: goldenrod;
+      // width: 125px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+
+    &.Canceled {
+      background-color: rgba(255, 0, 0, 0.1);
+      color: crimson;
+      // width: 125px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+
+    &.Shipping {
+      background-color: rgba(255, 0, 0, 0.1);
+      color: #106CC0;
+      // width: 125px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+  }
+
+  .cellAction {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .viewButton {
+      font-size: 26px;
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: darkblue;
+      // border: 1px dotted rgba(0, 0, 139, 0.596);
+      cursor: pointer;
+    }
+
+    .deleteButton {
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: crimson;
+      // border: 1px dotted rgba(220, 20, 60, 0.6);
+      cursor: pointer;
+    }
+  }
+}

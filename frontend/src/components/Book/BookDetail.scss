@@ -1,0 +1,194 @@
+.book-container {
+    .book-main-container {
+        .book-main-intro {
+            .book-main-title {
+
+                .book-author,
+                .book-publish {
+                    color: #957857;
+                }
+
+                .book-author-name,
+                .book-publish-name {
+                    color: #106cc0;
+                }
+            }
+
+            .book-main-price {
+                .book-price-container {
+                    .book-price-current {
+                        .book-current {
+                            color: #27a811;
+                        }
+                    }
+
+                    .book-price-cover-container {
+                        .book-price-sale {
+                            .book-sale {
+                                color: #b2123e;
+                            }
+                        }
+                    }
+                }
+
+                .book-add-button {
+                    .book-add-btn {
+                        background-color: #106cc0;
+                        color: #fff;
+                    }
+
+                    .book-add-btn:hover {
+                        background-color: #07559e;
+                    }
+                }
+            }
+
+            .book-main-check {
+                .book-like-button {
+                    .book-like-btn {
+                        background-color: #fff;
+                    }
+
+                    .book-like-btn:hover {
+                        background-color: #f1f1f1;
+                        color: #b2123e;
+                    }
+                }
+            }
+        }
+    }
+
+    .book-intro {
+        .book-intro-title {
+            border-bottom: #106cc0 2px solid;
+        }
+
+        .book-name-title {
+            color: #b2123e;
+        }
+
+        .book-intro-content {
+            text-align: justify;
+        }
+    }
+
+    .book-detail {
+        .book-detail-title {
+            border-bottom: #106cc0 2px solid;
+        }
+
+        .book-add-button {
+            .book-add-btn {
+                background-color: #106cc0;
+                color: #fff;
+            }
+
+            .book-add-btn:hover {
+                background-color: #07559e;
+            }
+        }
+    }
+
+    .book-comment {
+        .book-comment-title {
+            border-bottom: #106cc0 2px solid;
+        }
+
+        .book-comment-rating {
+            .book-item-rating {
+                font-size: 30px;
+            }
+        }
+
+        .book-comment-write {
+            .book-comment-avatar {
+                color: #106cc0;
+            }
+
+            .book-comment-field {
+                .book-comment-button {
+                    .book-cmt-btn {
+                        background-color: #106cc0;
+                        color: #fff;
+                        padding: 3px 25px;
+                        cursor: pointer;
+                    }
+
+                    .book-cmt-btn:hover {
+                        background-color: #07559e;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .book-comment-others {
+            .book-comment-user {
+                .book-comment-avatar {
+                    color: #106cc0;
+                }
+
+                .book-comment-container {
+                    .book-comment-userinfo {
+                        .book-comment-rating {
+                            font-size: 24px;
+                        }
+                    }
+                    .book-comment-content {
+                        text-align: justify;
+                    }
+                }
+            }
+        }
+    }
+
+    .book-other {
+        .book-other-title {
+            border-bottom: #106cc0 2px solid;
+        }
+
+        // .book-see-more {
+        //     margin-top: -40px !important;
+        // }
+    }
+}
+
+// .book-main-img {
+//     width: 500px;
+// }
+// .image-gallery {
+//     width: 40%;
+//     height: auto;
+// }
+.image-gallery-thumbnail-image {
+    height: 120px !important;
+    // width: auto;
+}
+
+
+.image-gallery-thumbnail {
+    width: initial;
+}
+
+.image-gallery-slide img {
+    width: auto;
+    height: 50vh;
+    // max-height: 80vh;
+    object-fit: cover;
+    overflow: hidden;
+    object-position: center center;
+}
+
+.image-gallery-left-nav .image-gallery-svg,
+.image-gallery-right-nav .image-gallery-svg {
+    height: 60px !important;
+    width: 60px;
+}
+
+.image-gallery-slide {
+    margin-bottom: 20px;
+}
+
+.fullscreen .image-gallery-slide img {
+    height: 82vh !important;
+}
