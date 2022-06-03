@@ -23,9 +23,8 @@ app.use(
     extended: true,
   })
 );
-const { PORT = 3000, LOCAL_ADDRESS = "0.0.0.0" } = process.env;
-app.listen(PORT, LOCAL_ADDRESS, () => {
-  const address = app.address();
+const { PORT = 5000 } = process.env;
+app.listen(PORT, () => {
   console.log("server listening at", address);
 });
 
