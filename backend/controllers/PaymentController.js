@@ -4,9 +4,7 @@ import Stripe from "stripe";
 
 dotenv.config();
 
-const stripe = new Stripe(
-  "sk_test_51L5YjUDEHgKc09sUryxdYlzNyEYHik5RAE2sPDysCL7bDdoxfqfAB7cSBtJRoL0244i7hUVl71CvIVOxsXeiKnGO00PAvnzukW"
-);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const calculateOrderAmount = (items) => {
   let productPrice = items.reduce(
@@ -36,8 +34,5 @@ export const Payment = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const sendStripeApiKey = catchAsyncErrors(async (req, res, next) => {
-  res.status(200).json({
-    stripeApiKey:
-      "pk_test_51L5YjUDEHgKc09sUXS5vqEcgGuSRYcKgwbEWsPluC2UTLNK6EBZaih2xigYC5A1ZzJzotjHZopJ5ESvz9PwE9MZl00lrbtGZo4",
-  });
+  res.status(200).json({ stripeApiKey: process.env.STRIPE_API_KEY });
 });
