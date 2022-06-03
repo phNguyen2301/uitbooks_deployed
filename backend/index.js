@@ -16,7 +16,7 @@ app.use(
     extended: true,
   })
 );
-const { PORT = 5000 } = process.env.PORT;
+const { PORT = 5000 } = 5000;
 app.listen(PORT, () => {
   console.log("server listening at", PORT);
 });
