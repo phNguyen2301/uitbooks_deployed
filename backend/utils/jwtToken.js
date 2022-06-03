@@ -3,8 +3,7 @@ export const sendToken = (user, statusCode, res) => {
 
   // Options for cookies
   const options = {
-    expireIn: process.env.JWT_EXPIRE,
-    httpOnly: true,
+    expiresIn: 24 * 60 * 60 * 100,
   };
 
   res.status(statusCode).cookie("token", token, options).json({

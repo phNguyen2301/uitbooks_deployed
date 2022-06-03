@@ -1,7 +1,6 @@
 import app from "./app.js";
 import bodyParser from "body-parser";
 import connectDatabase from "./db/Database.js";
-import { v2 as cloudinary } from "cloudinary";
 
 //Handling uncaught Exception
 process.on("uncaughtException", (err) => {
@@ -11,21 +10,15 @@ process.on("uncaughtException", (err) => {
 
 connectDatabase();
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
-
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
 );
-const { PORT = 5000 } = process.env;
+const { PORT = 5000 } = process.env.PORT;
 app.listen(PORT, () => {
-  console.log("server listening at", address);
+  console.log("server listening at", PORT);
 });
 
 process.on("unhandledRejection", (err) => {

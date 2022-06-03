@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import UserDataService from "../../../services/user";
-// import { persistor } from "../../store";
 
 export const userSlice = createSlice({
   name: "user",

@@ -4,14 +4,15 @@ import { sendToken } from "../utils/jwtToken.js";
 import { sendMail } from "../utils/sendMail.js";
 import crypto from "crypto";
 import ErrorHandler from "../utils/ErrorHandler.js";
-import { v2 as cloudinary } from "cloudinary";
+// import { v2 as cloudinary } from "cloudinary";
 
 export const createUser = catchAsyncErrors(async (req, res, next) => {
-  const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
-    folder: "avatars",
-    width: 150,
-    crop: "scale",
-  });
+  // const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
+  //   folder: "avatars",
+  //   width: 150,
+  //   crop: "scale",
+  // });
+  console.log("a");
   const { name, email, password } = req.body;
 
   const user = await User.create({
@@ -19,8 +20,8 @@ export const createUser = catchAsyncErrors(async (req, res, next) => {
     email,
     password,
     avatar: {
-      public_id: myCloud.public_id,
-      url: myCloud.secure_url,
+      public_id: "",
+      url: "",
     },
   });
   sendToken(user, 200, res);
@@ -57,7 +58,7 @@ export const loginUser = catchAsyncErrors(async (req, res, next) => {
 export const logoutUser = catchAsyncErrors(async (req, res, next) => {
   //   console.log(req.user);
   res.cookie("token", null, {
-    expires: new Date(Date.now()),
+    expiresIn: new Date(Date.now()),
     httpOnly: true,
   });
   //   console.log(res.cookie);
@@ -186,19 +187,19 @@ export const updateProfile = catchAsyncErrors(async (req, res, next) => {
   };
   if (req.body.avatar !== "") {
     const user = await User.findById(req.user.id);
-    if (user.avatar.public_id) {
-      const imageId = user.avatar.public_id;
+    // if (user.avatar.public_id) {
+    //   const imageId = user.avatar.public_id;
 
-      await cloudinary.uploader.destroy(imageId);
-    }
-    const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
-      folder: "avatars",
-      width: 150,
-      crop: "scale",
-    });
+    //   await cloudinary.uploader.destroy(imageId);
+    // }
+    // const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
+    //   folder: "avatars",
+    //   width: 150,
+    //   crop: "scale",
+    // });
     newUserData.avatar = {
-      public_id: myCloud.public_id,
-      url: myCloud.secure_url,
+      public_id: "",
+      url: "",
     };
   }
   // we add cloudinary letter then we are giving condition for the avatar
@@ -252,16 +253,16 @@ export const updateUserRole = catchAsyncErrors(async (req, res, next) => {
     if (user.avatar.public_id) {
       const imageId = user.avatar.public_id;
 
-      await cloudinary.uploader.destroy(imageId);
+      // await cloudinary.uploader.destroy(imageId);
     }
-    const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
-      folder: "avatars",
-      width: 150,
-      crop: "scale",
-    });
+    // const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
+    //   folder: "avatars",
+    //   width: 150,
+    //   crop: "scale",
+    // });
     newUserData.avatar = {
-      public_id: myCloud.public_id,
-      url: myCloud.secure_url,
+      public_id: "",
+      url: "",
     };
   }
   const user = await User.findByIdAndUpdate(req.params.id, newUserData, {

@@ -9,7 +9,6 @@ import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import fileUpload from "express-fileupload";
 import path from "path";
-import fs from "fs";
 
 const app = express();
 
@@ -36,6 +35,6 @@ app.use(express.static(path.join(__dir, "frontend/build")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dir + "/frontend/build/index.html"));
 });
-app.use(ErrorHandler);
+// app.use(ErrorHandler);
 
 export default app;
