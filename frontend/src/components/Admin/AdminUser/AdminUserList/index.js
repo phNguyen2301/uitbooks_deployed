@@ -30,6 +30,7 @@ const UserList = () => {
   const dispatch = useDispatch();
   const { loading, users } = useSelector((state) => state.allUsers);
   const { success, message } = useSelector((state) => state.userDetails);
+  const { registerSuccess, user } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(getAllUsers());

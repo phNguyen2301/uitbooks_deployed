@@ -27,6 +27,14 @@ class UserDataService {
       }
     );
   }
+  adminRegistration(name, email, password, avatar) {
+    return axios.post("/api/v2/admin/create-user", {
+      name: name,
+      email: email,
+      password: password,
+      avatar: avatar,
+    });
+  }
   logout() {
     return axios.get("/api/v2/logout");
   }

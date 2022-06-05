@@ -5,6 +5,7 @@
   "main": "backend/index.js",
   "type": "module",
   "scripts": {
+    "test": "jest",
     "frontend": "cd frontend && npm start",
     "backend": "nodemon backend/index.js",
     "dev": "concurrently --kill-others-on-fail \"npm run backend\" \"npm run frontend\"",
@@ -34,5 +35,8 @@
     "swagger-jsdoc": "^6.2.1",
     "swagger-ui-express": "^4.3.0",
     "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "jest": "^28.1.0"
   }
 }

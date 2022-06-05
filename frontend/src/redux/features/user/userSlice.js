@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import UserDataService from "../../../services/user";
-// import { persistor } from "../../store";
 
 export const userSlice = createSlice({
   name: "user",
@@ -13,6 +12,7 @@ export const userSlice = createSlice({
       state.message = null;
       state.status = null;
       state.success = null;
+      state.registerSuccess = null;
     },
   },
   extraReducers: (builder) => {
@@ -39,11 +39,29 @@ export const userSlice = createSlice({
         state.isAuthenticated = true;
         state.success = action.payload.success;
         state.avatar = action.payload.user.avatar.url;
+        state.registerSuccess = true;
       })
       .addCase(registerRequest.rejected, (state, action) => {
         state.loading = false;
         state.success = action.payload.success;
         state.error = action.payload.message;
+        state.registerSuccess = false;
+      })
+      .addCase(adminRegisterRequest.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(adminRegisterRequest.fulfilled, (state, action) => {
+        state.loading = false;
+        state.isAuthenticated = true;
+        state.success = action.payload.success;
+        state.avatar = action.payload.user.avatar.url;
+        state.registerSuccess = true;
+      })
+      .addCase(adminRegisterRequest.rejected, (state, action) => {
+        state.loading = false;
+        state.success = action.payload.success;
+        state.error = action.payload.message;
+        state.registerSuccess = false;
       })
       .addCase(logoutRequest.fulfilled, (state, action) => {
         state.loading = false;
@@ -120,6 +138,26 @@ export const loadUser = createAsyncThunk("user/loadUser", async () => {
 
   return data;
 });
+
+export const adminRegisterRequest = createAsyncThunk(
+  "user/adminRegisterRequest",
+  async ({ name, email, password, avatar }, { rejectWithValue }) => {
+    try {
+      const response = await UserDataService.adminRegistration(
+        name,
+        email,
+        password,
+        avatar
+      );
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
 
 export const { clear } = userSlice.actions;
 export default userSlice.reducer;
