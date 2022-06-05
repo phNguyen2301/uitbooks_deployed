@@ -44,15 +44,7 @@ function AccountNav() {
                 >
                   <div className="navbar-nav">
                     <img
-                      src={
-                        user
-                          ? user.avatar
-                            ? user.avatar.url
-                              ? user.avatar.url
-                              : ""
-                            : ""
-                          : ""
-                      }
+                      src={user ? user.avatar.url : ""}
                       className="rounded-circle my-account-nav-avatar m-2"
                       alt="Avatar"
                     />

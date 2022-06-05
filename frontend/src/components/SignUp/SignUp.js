@@ -23,6 +23,7 @@ function SignUp() {
   const navigate = useNavigate();
 
   const { error, success, loading } = useSelector((state) => {
+    console.log("state user", state.user);
     return state.user;
   });
 

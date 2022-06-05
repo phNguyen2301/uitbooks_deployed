@@ -2,7 +2,7 @@ import catchAsyncErrors from "../middleware/catchAsyncErrors.js";
 import { Book } from "../models/Book.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
 import ApiFeatures from "../utils/ApiFeatures.js";
-// import { v2 as cloudinary } from "cloudinary";
+import { v2 as cloudinary } from "cloudinary";
 
 // create new book
 export const createBook = catchAsyncErrors(async (req, res, next) => {
@@ -17,13 +17,13 @@ export const createBook = catchAsyncErrors(async (req, res, next) => {
   const imagesLinks = [];
 
   for (let i = 0; i < images.length; i++) {
-    // const result = await cloudinary.uploader.upload(images[i], {
-    //   folder: "books",
-    // });
+    const result = await cloudinary.uploader.upload(images[i], {
+      folder: "books",
+    });
 
     imagesLinks.push({
-      public_id: "",
-      url: "",
+      public_id: result.public_id,
+      url: result.secure_url,
     });
   }
 
@@ -153,20 +153,20 @@ export const updateBook = catchAsyncErrors(async (req, res, next) => {
 
   if (images !== undefined) {
     // Deleting Images From Cloudinary
-    // for (let i = 0; i < book.images.length; i++) {
-    //   await cloudinary.uploader.destroy(book.images[i].public_id);
-    // }
+    for (let i = 0; i < book.images.length; i++) {
+      await cloudinary.uploader.destroy(book.images[i].public_id);
+    }
 
     const imagesLinks = [];
 
     for (let i = 0; i < images.length; i++) {
-      // const result = await cloudinary.uploader.upload(images[i], {
-      //   folder: "books",
-      // });
+      const result = await cloudinary.uploader.upload(images[i], {
+        folder: "books",
+      });
 
       imagesLinks.push({
-        public_id: "",
-        url: "",
+        public_id: result.public_id,
+        url: result.secure_url,
       });
     }
 
@@ -191,7 +191,7 @@ export const deleteBook = catchAsyncErrors(async (req, res, next) => {
   }
   // Deleting Images From Cloudinary
   for (let i = 0; i < book.images.length; i++) {
-    // await cloudinary.uploader.destroy(book.images[i].public_id);
+    await cloudinary.uploader.destroy(book.images[i].public_id);
   }
 
   await book.remove();
