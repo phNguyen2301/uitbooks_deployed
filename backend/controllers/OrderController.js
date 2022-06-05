@@ -11,7 +11,7 @@ export const createOrder = catchAsyncErrors(async (req, res, next) => {
     (acc, item) => acc + item.quantity * item.price,
     0
   );
-  let shippingPrice = itemsPrice > 80000 ? 0 : 50000;
+  let shippingPrice = itemsPrice > 250000 ? 0 : 30000;
   let totalPrice = itemsPrice + shippingPrice;
   if (paymentInfo.id === "") {
     paymentInfo.id = new mongodb.ObjectId();

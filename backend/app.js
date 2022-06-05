@@ -66,7 +66,6 @@ app.use("/api/v2", order);
 app.use("/api/v2", payment);
 
 const specs = swaggerJsDoc(options);
-console.log(specs);
 app.use("/swagger", swaggerUI.serve, swaggerUI.setup(specs));
 
 // Serve static files from the React frontend app

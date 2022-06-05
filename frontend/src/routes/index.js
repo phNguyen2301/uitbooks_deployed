@@ -1,5 +1,10 @@
 import { React, useLayoutEffect } from "react";
-import { useLocation, BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  useLocation,
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 import Home from "../pages/HomePage";
 import AboutUs from "../pages/AboutUs";
 import Delivery from "../pages/Delivery";
@@ -51,8 +56,8 @@ const Wrapper = ({ children }) => {
   useLayoutEffect(() => {
     document.documentElement.scrollTo(0, 0);
   }, [location.pathname]);
-  return children
-}
+  return children;
+};
 
 export default function App() {
   return (
@@ -108,7 +113,7 @@ export default function App() {
           <Route path="/admin-order/edit" element={<AdminOrderDetailPage />} />
           <Route path="/admin-statistic" element={<AdminStatisticsPage />} />
 
-          <Route path="/notfound" element={<NotFound />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </Wrapper>
     </Router>
