@@ -46,7 +46,6 @@ export default function Topbar(props) {
   });
 
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   const [isAdmin, setIsAdmin] = useState(false);
@@ -63,6 +62,7 @@ export default function Topbar(props) {
     dispatch(clearCart());
     dispatch(clearFavourite());
     dispatch(logoutRequest());
+    navigate("/");
   };
   // Search
   const [keyword, setKeyword] = useState("");
