@@ -1,3 +1,7 @@
+import dotenv from "dotenv";
+
+dotenv.config({ path: "./backend/.env" });
+
 export const sendToken = (user, statusCode, res) => {
   const token = user.getJWTToken();
 

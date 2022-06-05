@@ -29,14 +29,6 @@ app.use("/api/v2", user);
 app.use("/api/v2", order);
 app.use("/api/v2", payment);
 const __dir = path.resolve();
-console.log(__dir);
-console.log(path.join(__dir, "frontend/build"));
-console.log(path.join(__dir + "/frontend/build/index.html"));
-fs.readdir(__dir, (err, files) => {
-  files.forEach((file) => {
-    console.log(file);
-  });
-});
 
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dir, "frontend/build")));

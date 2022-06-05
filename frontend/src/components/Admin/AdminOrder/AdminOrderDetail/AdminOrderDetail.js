@@ -23,8 +23,8 @@ const AdminOrderDetail = (props) => {
   const [orderDetails, setOrderDetails] = useState();
   const [address, setAddress] = useState("");
   const [orderStatus, setOrderStatus] = useState("");
-  let totalQuantity = 0
-  let totalPrice = 0
+  let totalQuantity = 0;
+  let totalPrice = 0;
   const location = useLocation();
   const dispatch = useDispatch();
   const orderId = location.state.orderId;
@@ -35,7 +35,7 @@ const AdminOrderDetail = (props) => {
 
   useEffect(() => {
     dispatch(getOrder({ id: orderId }));
-  }, []);
+  }, [dispatch]);
   useEffect(() => {
     if (order) {
       setOrderDetails(order);
@@ -57,7 +57,7 @@ const AdminOrderDetail = (props) => {
       // };
       dispatch(updateStatusOrder({ id: orderId, orderStatus }));
     }
-  }, [orderStatus]);
+  }, [dispatch, orderStatus]);
   useEffect(() => {
     if (success) {
       toast.success("update order status success");
@@ -67,7 +67,7 @@ const AdminOrderDetail = (props) => {
       toast.error(message);
     }
     dispatch(clear());
-  }, [success]);
+  }, [dispatch, success]);
   const overplay = useRef();
   const showEdit = () => {
     overplay.current.classList.remove("close");
@@ -135,8 +135,8 @@ const AdminOrderDetail = (props) => {
             <div className="product">
               {orderDetails ? (
                 orderDetails.orderItems.map((orderItem, index) => {
-                  totalQuantity += orderItem.quantity
-                  totalPrice += orderItem.price * orderItem.quantity
+                  totalQuantity += orderItem.quantity;
+                  totalPrice += orderItem.price * orderItem.quantity;
                   return (
                     <InformationProduct
                       key={index}

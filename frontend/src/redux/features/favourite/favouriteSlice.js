@@ -19,6 +19,9 @@ export const addItemsToFavourite = (id) => async (dispatch, getState) => {
 let initialState = {
   favouriteItems: [],
 };
+export const clearFavourite = () => async (dispatch) => {
+  dispatch({ type: "CLEAR_FAVOURITE" });
+};
 
 export default function favouriteSlice(state = initialState, action) {
   switch (action.type) {
@@ -40,7 +43,7 @@ export default function favouriteSlice(state = initialState, action) {
           favouriteItems: [...state.favouriteItems, item],
         };
       }
-    case "CLEAR":
+    case "CLEAR_FAVOURITE":
       return initialState;
     default:
       return state;

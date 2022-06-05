@@ -2,7 +2,7 @@ import catchAsyncErrors from "../middleware/catchAsyncErrors.js";
 import dotenv from "dotenv";
 import Stripe from "stripe";
 
-dotenv.config();
+dotenv.config({ path: "./backend/.env" });
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 

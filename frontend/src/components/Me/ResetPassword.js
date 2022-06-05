@@ -41,7 +41,7 @@ export default function ResetPassword() {
         navigate("/signin");
       }, 3000);
     }
-  }, [status]);
+  }, [dispatch, status]);
   return (
     <Container className="containerForgotPassWord">
       <Form className="ForgotPassWordForm">

@@ -2,6 +2,9 @@ import app from "./app.js";
 import bodyParser from "body-parser";
 import connectDatabase from "./db/Database.js";
 import { v2 as cloudinary } from "cloudinary";
+import dotenv from "dotenv";
+
+dotenv.config({ path: "./backend/.env" });
 
 //Handling uncaught Exception
 process.on("uncaughtException", (err) => {

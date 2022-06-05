@@ -13,8 +13,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "./AccountInfor.scss";
 
 function AccountInfor() {
-  const location = useLocation();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { user, loading } = useSelector((state) => state.user);
@@ -31,7 +29,7 @@ function AccountInfor() {
 
   useEffect(() => {
     dispatch(loadUser());
-  }, []);
+  }, [dispatch]);
   // update info
   useEffect(() => {
     if (user) {
@@ -56,7 +54,7 @@ function AccountInfor() {
       dispatch(loadUser());
     }
     dispatch(clear());
-  }, [isUpdated, error]);
+  }, [dispatch, isUpdated, error]);
   // update password
   const handleUpdatePassword = (e) => {
     e.preventDefault();

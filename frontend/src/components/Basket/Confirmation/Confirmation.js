@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Col, Container, Row } from "react-bootstrap";
 import "./confirmation.scss";
@@ -13,10 +13,6 @@ const Confirmation = (props) => {
   function getFullAddress(houseAddress, ward, district, city) {
     return houseAddress + ", " + ward + ", " + district + ", " + city;
   }
-  let Price = order.orderItems.reduce(
-    (acc, item) => acc + item.quantity * item.price,
-    0
-  );
 
   return (
     <div>
@@ -55,31 +51,34 @@ const Confirmation = (props) => {
                   <div className="confirm__information__block__content__title">
                     Thông tin sản phẩm
                   </div>
-                  {order.orderItems.map((item, index) => {
-                    return (
-                      <div className="info-order__product" key={index}>
-                        <img src={item.image} alt="" />
-                        <div className="info-order__product__information">
-                          <div className="info-order__product__information__name">
-                            {item.name}
+                  {order.orderItems && (
+                    <>
+                      {order.orderItems.map((item, index) => {
+                        return (
+                          <div className="info-order__product" key={index}>
+                            <img src={item.image} alt="" />
+                            <div className="info-order__product__information">
+                              <div className="info-order__product__information__name">
+                                {item.name}
+                              </div>
+                              <div className="info-order__product__information__author">
+                                {item.autho}
+                              </div>
+                              <div className="info-order__product__information__quantity">
+                                x {item.quantity}
+                              </div>
+                            </div>
+                            <div className="info-order__product__money">
+                              Thành tiền:
+                              <span className="info-order__product__money__value">
+                                {numberWithCommas(item.price * item.quantity)}
+                              </span>
+                            </div>
                           </div>
-                          <div className="info-order__product__information__author">
-                            {item.autho}
-                          </div>
-                          <div className="info-order__product__information__quantity">
-                            x {item.quantity}
-                          </div>
-                        </div>
-                        <div className="info-order__product__money">
-                          Thành tiền:
-                          <span className="info-order__product__money__value">
-                            {numberWithCommas(item.price * item.quantity)}
-                          </span>
-                        </div>
-                      </div>
-                    );
-                  })}
-
+                        );
+                      })}
+                    </>
+                  )}
                   <hr />
                   <div className="confirm__information__block__content__methodPayment">
                     Phương thức thanh toán:

@@ -38,7 +38,7 @@ const OrderTable = () => {
 
   useEffect(() => {
     dispatch(getAllOrders());
-  }, []);
+  }, [dispatch]);
   useEffect(() => {
     if (orders) {
       setData(() => {
@@ -70,7 +70,7 @@ const OrderTable = () => {
       toast.error(message);
     }
     dispatch(clear());
-  }, [success, message]);
+  }, [dispatch, success, message]);
 
   const actionColumn = [
     {

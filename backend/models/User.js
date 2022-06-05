@@ -4,6 +4,9 @@ import validator from "validator";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
+import dotenv from "dotenv";
+
+dotenv.config({ path: "./backend/.env" });
 
 const userSchema = new mongoose.Schema({
   name: {

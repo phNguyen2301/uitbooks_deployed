@@ -17,9 +17,11 @@ function UserNew() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // avatar
-  const [avatar, setAvatar] = useState("/images/account/avatar.png");
+  const [avatar, setAvatar] = useState(
+    "https://www.allthetests.com/quiz22/picture/pic_1171831236_1.png"
+  );
   const [avatarPreview, setAvatarPreview] = useState(
-    "/images/account/avatar.png"
+    "https://www.allthetests.com/quiz22/picture/pic_1171831236_1.png"
   );
 
   const dispatch = useDispatch();
@@ -69,7 +71,7 @@ function UserNew() {
         navigate("/admin-user-list");
       }, 3000);
     }
-  }, [error, success]);
+  }, [error, success, dispatch, navigate]);
 
   return (
     <>

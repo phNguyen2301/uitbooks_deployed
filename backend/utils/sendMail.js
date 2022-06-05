@@ -1,4 +1,6 @@
 import nodeMailer from "nodemailer";
+import dotenv from "dotenv";
+dotenv.config({ path: "./backend/.env" });
 
 export const sendMail = async (options) => {
   const transporter = nodeMailer.createTransport({
