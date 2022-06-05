@@ -106,13 +106,9 @@ export const forgotPassword = catchAsyncErrors(async (req, res, next) => {
     validateBeforeSave: false,
   });
 
-  // const resetPasswordUrl = `${req.protocol}://${req.get(
-  //   "host"
-  // )}/password/reset/${resetToken}`;
+  const resetPasswordUrl = `https://uitbooks-app.herokuapp.com/password/reset/${resetToken}`;
 
-  const resetPasswordUrl = `${req.protocol}://localhost:3000/password/reset/${resetToken}`;
-
-  const message = `Your password reset token is :- \n\n ${resetPasswordUrl}`;
+  const message = `Your password reset token is : \n\n ${resetPasswordUrl}`;
 
   try {
     await sendMail({
