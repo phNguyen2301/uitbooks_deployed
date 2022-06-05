@@ -1,17 +1,15 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
 async function connectDatabase() {
+  dotenv.config();
   try {
-    await mongoose.connect(
-      "mongodb+srv://ie213-6:ie213-6@ie213-6.ji3lp.mongodb.net/MERN?retryWrites=true&w=majority"
-    );
+    await mongoose.connect(process.env.DB_URI);
     console.log("Connect success");
   } catch (error) {
     console.log("Connect failure!!");
   }
-  mongoose.connect(
-    "mongodb+srv://ie213-6:ie213-6@ie213-6.ji3lp.mongodb.net/MERN?retryWrites=true&w=majority"
-  );
+  mongoose.connect(process.env.DB_URI);
 }
 
 export default connectDatabase;

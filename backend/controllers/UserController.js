@@ -10,8 +10,8 @@ export const createUser = catchAsyncErrors(async (req, res, next) => {
   const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
     folder: "avatars",
     width: 150,
-    crop: 'scale'
-  })
+    crop: "scale",
+  });
   const { name, email, password } = req.body;
 
   const user = await User.create({
@@ -184,23 +184,23 @@ export const updateProfile = catchAsyncErrors(async (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
   };
-  if(req.body.avatar !== "") {
-    const user = await User.findById(req.user.id)
-    if(user.avatar.public_id) {
-      const imageId = user.avatar.public_id
-  
-      await cloudinary.uploader.destroy(imageId)
+  if (req.body.avatar !== "") {
+    const user = await User.findById(req.user.id);
+    if (user.avatar.public_id) {
+      const imageId = user.avatar.public_id;
+
+      await cloudinary.uploader.destroy(imageId);
     }
     const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
       folder: "avatars",
       width: 150,
       crop: "scale",
-    })
+    });
     newUserData.avatar = {
       public_id: myCloud.public_id,
       url: myCloud.secure_url,
     };
-  } 
+  }
   // we add cloudinary letter then we are giving condition for the avatar
   const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,
@@ -247,23 +247,23 @@ export const updateUserRole = catchAsyncErrors(async (req, res, next) => {
     email: req.body.email,
     role: req.body.role,
   };
-  if(req.body.avatar !== "") {
-    const user = await User.findById(req.user.id)
-    if(user.avatar.public_id) {
-      const imageId = user.avatar.public_id
-  
-      await cloudinary.uploader.destroy(imageId)
+  if (req.body.avatar !== "") {
+    const user = await User.findById(req.user.id);
+    if (user.avatar.public_id) {
+      const imageId = user.avatar.public_id;
+
+      await cloudinary.uploader.destroy(imageId);
     }
     const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
       folder: "avatars",
       width: 150,
       crop: "scale",
-    })
+    });
     newUserData.avatar = {
       public_id: myCloud.public_id,
       url: myCloud.secure_url,
     };
-  } 
+  }
   const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
     new: true,
     runValidators: true,
