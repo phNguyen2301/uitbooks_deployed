@@ -26,6 +26,29 @@ export const createUser = catchAsyncErrors(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 
+export const adminCreateUser = catchAsyncErrors(async (req, res, next) => {
+  const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
+    folder: "avatars",
+    width: 150,
+    crop: "scale",
+  });
+  const { name, email, password } = req.body;
+
+  const user = await User.create({
+    name,
+    email,
+    password,
+    avatar: {
+      public_id: myCloud.public_id,
+      url: myCloud.secure_url,
+    },
+  });
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
+
 export const loginUser = catchAsyncErrors(async (req, res, next) => {
   const { email, password } = req.body;
 

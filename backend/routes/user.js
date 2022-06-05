@@ -12,6 +12,7 @@ import {
   updateProfile,
   updateUserRole,
   userDetails,
+  adminCreateUser,
 } from "../controllers/UserController.js";
 import { authorizeRoles, isAuthenticatedUser } from "../middleware/auth.js";
 
@@ -314,4 +315,8 @@ router
   .get(isAuthenticatedUser, authorizeRoles("admin"), getSingleUser)
   .put(isAuthenticatedUser, authorizeRoles("admin"), updateUserRole)
   .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteUser);
+
+router
+  .route("/admin/create-user")
+  .post(isAuthenticatedUser, authorizeRoles("admin"), adminCreateUser);
 export default router;
