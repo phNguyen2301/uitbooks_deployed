@@ -33,7 +33,7 @@ const UserList = () => {
 
   useEffect(() => {
     dispatch(getAllUsers());
-  }, []);
+  }, [dispatch]);
   useEffect(() => {
     if (users) {
       setData(() => {
@@ -58,7 +58,7 @@ const UserList = () => {
       toast.error(message);
     }
     dispatch(clear());
-  }, [success]);
+  }, [dispatch, success]);
 
   const handleDeleteUser = () => {
     dispatch(deleteUser({ id: idDelete }));

@@ -1,8 +1,10 @@
 import ErrorHandler from "../utils/ErrorHandler.js";
 import catchAsyncErrors from "./catchAsyncErrors.js";
+import dotenv from "dotenv";
 
 import jwt from "jsonwebtoken";
 import { User } from "../models/User.js";
+dotenv.config({ path: "./backend/.env" });
 
 export const isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
   const { token } = req.cookies;

@@ -27,9 +27,11 @@ import { PURGE } from "redux-persist";
 
 import { useDispatch, useSelector } from "react-redux";
 import { logoutRequest, clear } from "../../redux/features/user/userSlice";
+import { clearCart } from "../../redux/features/cart/cartSlice";
 import Loading from "../../more/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { clearFavourite } from "../../redux/features/favourite/favouriteSlice";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -44,7 +46,6 @@ export default function Topbar(props) {
   });
 
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   const [isAdmin, setIsAdmin] = useState(false);
@@ -58,8 +59,10 @@ export default function Topbar(props) {
     });
     // localStorage.removeItem("persist:root");
     window.localStorage.removeItem("persist:root");
-
+    dispatch(clearCart());
+    dispatch(clearFavourite());
     dispatch(logoutRequest());
+    navigate("/");
   };
   // Search
   const [keyword, setKeyword] = useState("");
@@ -74,13 +77,15 @@ export default function Topbar(props) {
   // done
   useEffect(() => {
     if (isAuthenticated === false && user === null && status === true) {
-      toast.success("Đăng xuất thành công, vui lòng chờ trong 3s để quay lại trang Đăng nhập nhé 🥺");
+      toast.success(
+        "Đăng xuất thành công, vui lòng chờ trong 3s để quay lại trang Đăng nhập nhé 🥺"
+      );
       setTimeout(() => {
         navigate("/signin");
       }, 3000);
       dispatch(clear());
     }
-  }, [isAuthenticated]);
+  }, [dispatch, isAuthenticated]);
 
   useEffect(() => {
     if (user) {
@@ -146,7 +151,9 @@ export default function Topbar(props) {
                   <Nav.Link as={Link} to="/my-basket" eventKey="link-2">
                     <div className="d-flex flex-column align-items-center">
                       <IconButton aria-label="cart" style={{ padding: "0" }}>
-                        <StyledBadge badgeContent={cartItems ? cartItems.length : 0}>
+                        <StyledBadge
+                          badgeContent={cartItems ? cartItems.length : 0}
+                        >
                           <ShoppingCartIcon className="nav-icon" />
                         </StyledBadge>
                       </IconButton>
@@ -222,13 +229,23 @@ export default function Topbar(props) {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
               {/* <Nav className="d-flex"> */}
-              <Nav.Link as={Link} to="/books" className={`d-flex ${pathname === "/books" ? "active" : ""}`}>
+              <Nav.Link
+                as={Link}
+                to="/books"
+                className={`d-flex ${pathname === "/books" ? "active" : ""}`}
+              >
                 <ListAltIcon className="nav-icons" />
                 Danh mục
               </Nav.Link>
               {/* </Nav> */}
 
-              <Nav.Link as={Link} to="/blogs" className={`d-flex nav-link-items ${pathname === "/blogs" ? "active" : ""}`}>
+              <Nav.Link
+                as={Link}
+                to="/blogs"
+                className={`d-flex nav-link-items ${
+                  pathname === "/blogs" ? "active" : ""
+                }`}
+              >
                 <RssFeedIcon className="nav-icons" />
                 Chia sẻ
               </Nav.Link>
@@ -236,7 +253,9 @@ export default function Topbar(props) {
               <Nav.Link
                 as={Link}
                 to="/about-us"
-                className={`d-flex nav-link-items ${pathname === "/about-us" ? "active" : ""}`}
+                className={`d-flex nav-link-items ${
+                  pathname === "/about-us" ? "active" : ""
+                }`}
               >
                 <GroupsIcon className="nav-icons" />
                 Giới thiệu

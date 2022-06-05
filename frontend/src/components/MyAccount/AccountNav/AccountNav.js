@@ -15,7 +15,7 @@ function AccountNav() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadUser());
-  }, []);
+  }, [dispatch]);
   const { pathname } = useLocation();
   const { loading, user } = useSelector((state) => state.user);
   return (
@@ -44,7 +44,7 @@ function AccountNav() {
                 >
                   <div className="navbar-nav">
                     <img
-                      src={user ? user.avatar.url : ""}
+                      src={user.avatar ? user.avatar.url : ""}
                       className="rounded-circle my-account-nav-avatar m-2"
                       alt="Avatar"
                     />

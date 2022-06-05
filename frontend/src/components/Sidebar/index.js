@@ -25,7 +25,7 @@ const Sidebar = () => {
       dispatch(clear());
       navigate("/");
     }
-  }, [status]);
+  }, [dispatch, status]);
   const handleLogout = () => {
     dispatch(logoutRequest());
   };

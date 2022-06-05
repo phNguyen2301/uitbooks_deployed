@@ -24,7 +24,7 @@ function UserEdit() {
 
   useEffect(() => {
     dispatch(getUserDetails({ userId }));
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (user) {
@@ -48,7 +48,7 @@ function UserEdit() {
       toast.error("Update not success");
     }
     dispatch(clear());
-  }, [success]);
+  }, [dispatch, success]);
 
   const handleAvatarChange = (e) => {
     if (e.target.name === "avatar") {
@@ -225,10 +225,7 @@ function UserEdit() {
                   </label>
                   <div className="col-sm-10">
                     {avatar ? (
-                      <img
-                        src={avatar}
-                        className="avatar"
-                      />
+                      <img src={avatar} className="avatar" />
                     ) : (
                       "Chưa có Avatar"
                     )}

@@ -93,10 +93,10 @@ const AdminBookList = () => {
       handleClose();
       dispatch(resetStateDeletedReview());
     }
-  }, [reviews, reviewDeleteError, alert, isDeletedReview]);
+  }, [reviews, reviewDeleteError, dispatch, isDeletedReview]);
   useEffect(() => {
     dispatch(getProductsAdmin());
-  }, []);
+  }, [dispatch]);
   useEffect(() => {
     if (error) {
       alert(error);

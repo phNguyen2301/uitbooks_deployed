@@ -4,7 +4,10 @@ import { useState, useEffect } from "react";
 import { Col, Container, Form, Row, Button, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { loginRequest, clear } from "../../redux/features/user/userSlice";
-import { forgotPassword, clearMessage } from "../../redux/features/user/forgotPasswordSlice";
+import {
+  forgotPassword,
+  clearMessage,
+} from "../../redux/features/user/forgotPasswordSlice";
 import { FcHome } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEnvelope } from "react-icons/fa";
@@ -26,14 +29,14 @@ const SignIn = (props) => {
 
   const handleClose = () => setShow(false);
   const handleShow = (e) => {
-    e.preventDefault()
-    setShow(true)
+    e.preventDefault();
+    setShow(true);
   };
 
   const { error, loading, isAuthenticated } = useSelector((state) => {
     return state.user;
   });
-  const { status, message } = useSelector(state => state.forgotPassword)
+  const { status, message } = useSelector((state) => state.forgotPassword);
 
   const navigate = useNavigate();
 
@@ -64,12 +67,12 @@ const SignIn = (props) => {
     dispatch(loginRequest({ email, password }));
   };
   const handleSubmitEmail = (e) => {
-    handleClose()
-    dispatch(forgotPassword({ email }))
-  }
+    handleClose();
+    dispatch(forgotPassword({ email }));
+  };
   const handleToRegister = () => {
-    navigate('/signup')
-  }
+    navigate("/signup");
+  };
   useEffect(() => {
     if (status) {
       toast.success(message);
@@ -79,7 +82,7 @@ const SignIn = (props) => {
       toast.error(message);
       dispatch(clearMessage());
     }
-  }, [status, message])
+  }, [dispatch, status, message]);
   return (
     <>
       {loading ? (
@@ -95,7 +98,10 @@ const SignIn = (props) => {
                     <div className="title__name">UITBooks</div>
                   </div>
                   <div className="image">
-                    <img src="https://drive.google.com/uc?id=1lL3RkPBS6QbJ8r-hz7VFa536y-jvk0B0" alt="login-img" />
+                    <img
+                      src="https://drive.google.com/uc?id=1lL3RkPBS6QbJ8r-hz7VFa536y-jvk0B0"
+                      alt="login-img"
+                    />
                   </div>
                 </Col>
                 <Col md="6" lg="5" className="signIn__container__right">
@@ -122,14 +128,12 @@ const SignIn = (props) => {
                           onChange={handleEmail}
                         />
                       </div>
-
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                       {/* <Form.Label>Password</Form.Label> */}
                       <div className="sigIn__form__row">
                         <div className="sigIn__form__row__icon">
-
                           <BiKey className="signIn__icon" />
                         </div>
                         <Form.Control
@@ -138,7 +142,6 @@ const SignIn = (props) => {
                           onChange={handlePassword}
                         />
                       </div>
-
                     </Form.Group>
                     <div className="d-flex justify-content-center mt-3 signIn__submit">
                       <Button
@@ -148,11 +151,18 @@ const SignIn = (props) => {
                       >
                         Đăng nhập
                       </Button>
-
                     </div>
                     <div className="signin-links">
-                      <Link to="/signup" className="toLogin">Chưa có tài khoản?</Link>
-                      <a href="" className="forgotPassword" onClick={handleShow}>Quên mật khẩu?</a>
+                      <Link to="/signup" className="toLogin">
+                        Chưa có tài khoản?
+                      </Link>
+                      <a
+                        href=""
+                        className="forgotPassword"
+                        onClick={handleShow}
+                      >
+                        Quên mật khẩu?
+                      </a>
                     </div>
                     <div className="sigIn__form__separate">
                       <hr />

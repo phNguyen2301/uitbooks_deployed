@@ -150,6 +150,7 @@ export const updateAdminOrder = catchAsyncErrors(async (req, res, next) => {
 async function updateStock(id, quantity) {
   const book = await Book.findById(id);
   book.Stock -= quantity;
+  book.Sold += quantity;
 
   await book.save({ validateBeforeSave: false });
 }
