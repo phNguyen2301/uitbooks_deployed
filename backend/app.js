@@ -8,8 +8,44 @@ import payment from "./routes/payment.js";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import fileUpload from "express-fileupload";
+import swaggerUI from "swagger-ui-express";
+import swaggerJsDoc from "swagger-jsdoc";
 import path from "path";
-import fs from "fs";
+
+const __dir = path.resolve();
+
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "UIT BOOK API",
+      version: "1.0.0",
+      description: "All Apis For UIT BOOK Project",
+    },
+    // components: {
+    //   securitySchemes: {
+    //     jwt: {
+    //       type: "http",
+    //       scheme: "bearer",
+    //       in: "header",
+    //       bearerFormat: "JWT",
+    //     },
+    //   },
+    // },
+    // security: [
+    //   {
+    //     jwt: ["123"],
+    //   },
+    // ],
+    // servers: [
+    //   {
+    //     url: '',
+    //   },
+    // ],
+  },
+
+  apis: [path.join(__dir, "backend/routes/*.js")],
+};
 
 const app = express();
 
@@ -28,7 +64,10 @@ app.use("/api/v2", books);
 app.use("/api/v2", user);
 app.use("/api/v2", order);
 app.use("/api/v2", payment);
-const __dir = path.resolve();
+
+const specs = swaggerJsDoc(options);
+console.log(specs);
+app.use("/swagger", swaggerUI.serve, swaggerUI.setup(specs));
 
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dir, "frontend/build")));
