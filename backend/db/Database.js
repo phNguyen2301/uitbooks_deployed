@@ -1,15 +1,14 @@
-import mongoose from "mongoose";
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 
-dotenv.config({ path: "./backend/.env" });
+dotenv.config({ path: './backend/.env' });
 async function connectDatabase() {
   try {
-    await mongoose.connect(process.env.DB_URI);
-    console.log("Connect success");
+    mongoose.connect(process.env.DB_URI);
+    console.log('Connect success');
   } catch (error) {
-    console.log("Connect failure!!");
+    console.log('Connect failure!!');
   }
-  mongoose.connect(process.env.DB_URI);
 }
 
 export default connectDatabase;

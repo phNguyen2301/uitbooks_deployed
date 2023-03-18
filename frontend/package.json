@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apideck/better-ajv-errors": "^0.3.6",
     "@ckeditor/ckeditor5-build-classic": "^34.0.0",
     "@ckeditor/ckeditor5-react": "^5.0.1",
     "@emotion/react": "^11.8.2",
