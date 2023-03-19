@@ -1,6 +1,6 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { Navigate, Route } from "react-router-dom";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
 const ProtectedRoute = ({ isAdmin, children }) => {
   const { user } = useSelector((state) => state.user);
@@ -10,16 +10,16 @@ const ProtectedRoute = ({ isAdmin, children }) => {
         { isAdmin && user.role !== 'admin' && <Navigate to='/signin' /> } */}
       {isAdmin ? (
         user ? (
-          user.role !== "admin" ? (
-            <Navigate to="/signin" />
+          user.role !== 'admin' ? (
+            <Navigate to='/signin' />
           ) : (
             <>{children}</>
           )
         ) : (
-          <Navigate to="/signin" />
+          <Navigate to='/signin' />
         )
       ) : !user ? (
-        <Navigate to="/signin" />
+        <Navigate to='/signin' />
       ) : (
         <>{children}</>
       )}

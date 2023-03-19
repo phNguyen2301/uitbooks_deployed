@@ -1,29 +1,29 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import {
   clearErrorsDetails,
   getProductDetails,
-} from "../../../../redux/features/product/productDetailsSlice";
+} from '../../../../redux/features/product/productDetailsSlice';
 import {
   clearErrorsDeleted,
   resetStateUpdated,
   updateProduct,
-} from "../../../../redux/features/product/productSlice";
-import "../AdminBookNew/AdminBookNew.scss";
-import { toast, ToastContainer } from "react-toastify";
+} from '../../../../redux/features/product/productSlice';
+import '../AdminBookNew/AdminBookNew.scss';
 // import { useState } from 'react'
 
 function AdminBookEdit() {
   const { id } = useParams();
   // console.log(id);
   // set Property
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("Tâm lý");
-  const [publisher, setPublisher] = useState("");
-  const [author, setAuthor] = useState("");
+  const [description, setDescription] = useState('');
+  const [category, setCategory] = useState('Tâm lý');
+  const [publisher, setPublisher] = useState('');
+  const [author, setAuthor] = useState('');
   const [Stock, setStock] = useState(0);
   const [pageNumber, setPageNumber] = useState(0);
   const [oldImages, setOldImages] = useState([]);
@@ -33,7 +33,7 @@ function AdminBookEdit() {
   const { error, product } = useSelector((state) => state.productDetails);
 
   const {
-    loading,
+    // loading,
     error: updateError,
     isUpdated,
   } = useSelector((state) => state.product);
@@ -62,7 +62,7 @@ function AdminBookEdit() {
       // console.log(updateError);
       // alert(updateError);
       toast.error(`${updateError}`, {
-        position: "bottom-center",
+        position: 'bottom-center',
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -75,7 +75,7 @@ function AdminBookEdit() {
     if (isUpdated) {
       // alert("book Updated Successfully");
       toast.success('Cập nhật sách thành công! 🎊', {
-        position: "bottom-center",
+        position: 'bottom-center',
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -86,28 +86,28 @@ function AdminBookEdit() {
       dispatch(getProductDetails(id));
       dispatch(resetStateUpdated());
       setTimeout(() => {
-        navigate("/admin-book-list")
+        navigate('/admin-book-list');
       }, 3000);
       // navigate("/admin-book-list");
     }
-  }, [dispatch, alert, error, isUpdated, id, product, updateError]);
+  }, [dispatch, error, isUpdated, id, product, updateError, navigate]);
   // handler
   const updateBookSubmitHandler = (e) => {
     e.preventDefault();
 
     const myForm = new FormData();
 
-    myForm.set("name", name);
-    myForm.set("price", price);
-    myForm.set("description", description);
-    myForm.set("author", author);
-    myForm.set("publisher", publisher);
-    myForm.set("category", category);
-    myForm.set("Stock", Stock);
-    myForm.set("pageNumber", pageNumber);
+    myForm.set('name', name);
+    myForm.set('price', price);
+    myForm.set('description', description);
+    myForm.set('author', author);
+    myForm.set('publisher', publisher);
+    myForm.set('category', category);
+    myForm.set('Stock', Stock);
+    myForm.set('pageNumber', pageNumber);
 
     images.forEach((image) => {
-      myForm.append("images", image);
+      myForm.append('images', image);
     });
     console.log(id);
     const productData = {
@@ -138,34 +138,34 @@ function AdminBookEdit() {
   };
 
   return (
-    <div className="container">
-      <form className="form-container" onSubmit={updateBookSubmitHandler}>
-        <div className="form-title-header">
-          <h5 className="mb-4">Chỉnh sửa sách</h5>
+    <div className='container'>
+      <form className='form-container' onSubmit={updateBookSubmitHandler}>
+        <div className='form-title-header'>
+          <h5 className='mb-4'>Chỉnh sửa sách</h5>
           <hr />
-          <p className="dark-blue-text mt-4" />
+          <p className='dark-blue-text mt-4' />
         </div>
-        <div className="form-group">
-          <label className="form-group-label" htmlFor="book-name-add">
+        <div className='form-group'>
+          <label className='form-group-label' htmlFor='book-name-add'>
             Tên sách
           </label>
           <input
-            type="text"
-            className="form-control"
-            id="book-name-add"
+            type='text'
+            className='form-control'
+            id='book-name-add'
             placeholder={name}
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
 
-        <div className="form-group">
-          <label className="form-group-label" htmlFor="category-select-add">
+        <div className='form-group'>
+          <label className='form-group-label' htmlFor='category-select-add'>
             Thể loại
           </label>
           <select
-            className="form-control form-select"
-            id="category-select-add"
+            className='form-control form-select'
+            id='category-select-add'
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
@@ -182,134 +182,134 @@ function AdminBookEdit() {
           </select>
         </div>
 
-        <div className="form-group">
-          <label className="form-group-label" htmlFor="author-add">
+        <div className='form-group'>
+          <label className='form-group-label' htmlFor='author-add'>
             Tác giả
           </label>
           <input
-            type="text"
-            className="form-control"
-            id="author-add"
+            type='text'
+            className='form-control'
+            id='author-add'
             placeholder={author}
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
           />
         </div>
 
-        <div className="form-group">
-          <label className="form-group-label" htmlFor="publisher-add">
+        <div className='form-group'>
+          <label className='form-group-label' htmlFor='publisher-add'>
             Nhà xuất bản
           </label>
           <input
-            type="text"
-            className="form-control"
-            id="publisher-add"
+            type='text'
+            className='form-control'
+            id='publisher-add'
             placeholder={publisher}
             value={publisher}
             onChange={(e) => setPublisher(e.target.value)}
           />
         </div>
 
-        <div className="form-group">
-          <label className="form-group-label" htmlFor="img-add">
+        <div className='form-group'>
+          <label className='form-group-label' htmlFor='img-add'>
             Hình ảnh
           </label>
           <input
-            type="file"
-            className="form-control"
-            id="img-add"
-            placeholder="Choose file"
-            name="avatar"
-            accept="image/*"
+            type='file'
+            className='form-control'
+            id='img-add'
+            placeholder='Choose file'
+            name='avatar'
+            accept='image/*'
             onChange={updateBookImagesChange}
             multiple
           />
-          <div id="createBookFormImage">
+          <div id='createBookFormImage'>
             {oldImages &&
               oldImages.map((image, index) => (
-                <div className="img-wrapper">
-                  <img key={index} src={image.url} alt="Old Book Preview" />
+                <div className='img-wrapper'>
+                  <img key={index} src={image.url} alt='Old Book Preview' />
                 </div>
               ))}
           </div>
 
-          <div id="createBookFormImage">
+          <div id='createBookFormImage'>
             {imagesPreview.map((image, index) => (
-              <div className="img-wrapper">
-                <img key={index} src={image} alt="Book Preview" />
+              <div className='img-wrapper'>
+                <img key={index} src={image} alt='Book Preview' />
               </div>
             ))}
           </div>
         </div>
 
-        <div className="form-group">
-          <label className="form-group-label" htmlFor="pageNumber-add">
+        <div className='form-group'>
+          <label className='form-group-label' htmlFor='pageNumber-add'>
             Số trang
           </label>
           <input
             value={pageNumber}
-            type="number"
-            className="form-control"
-            id="pageNumber-add"
+            type='number'
+            className='form-control'
+            id='pageNumber-add'
             placeholder={pageNumber}
             onChange={(e) => setPageNumber(e.target.value)}
           />
         </div>
 
-        <div className="form-group">
-          <label className="form-group-label" htmlFor="Stock-add">
+        <div className='form-group'>
+          <label className='form-group-label' htmlFor='Stock-add'>
             Tồn kho
           </label>
           <input
-            type="number"
-            className="form-control"
-            id="Stock-add"
+            type='number'
+            className='form-control'
+            id='Stock-add'
             placeholder={Stock}
             value={Stock}
             onChange={(e) => setStock(e.target.value)}
           />
         </div>
 
-        <div className="form-group">
-          <label className="form-group-label" htmlFor="publisher-add">
+        <div className='form-group'>
+          <label className='form-group-label' htmlFor='publisher-add'>
             Giá
           </label>
           <input
-            type="text"
-            className="form-control"
-            id="publisher-add"
+            type='text'
+            className='form-control'
+            id='publisher-add'
             placeholder={price}
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
         </div>
 
-        <div className="form-group">
+        <div className='form-group'>
           <label
-            className="form-group-label"
-            htmlFor="exampleFormControlTextarea1"
+            className='form-group-label'
+            htmlFor='exampleFormControlTextarea1'
           >
             Mô tả sách
           </label>
           <textarea
-            className="form-control"
-            id="exampleFormControlTextarea1"
-            rows="10"
+            className='form-control'
+            id='exampleFormControlTextarea1'
+            rows='10'
             placeholder={description}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           ></textarea>
         </div>
 
-        <button type="submit" className="btn btn-submit">
+        <button type='submit' className='btn btn-submit'>
           Gửi
         </button>
-        <button type="button" className="btn btn-reset">
+        <button type='button' className='btn btn-reset'>
           Khôi phục
         </button>
       </form>
       <ToastContainer
-        position="bottom-center"
+        position='bottom-center'
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}

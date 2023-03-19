@@ -1,20 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
-import BasketHeader from "../components/Basket/BasketHeader/BasketHeader";
-import ItemBasket from "../components/Basket/ItemBasket/ItemBasket";
-import MainLayout from "../layouts";
-import ProtectedRoute from "../routes/PrivateRoute";
-const LayoutBasket = props => {
+import React from 'react';
+import BasketHeader from '../components/Basket/BasketHeader/BasketHeader';
+import ItemBasket from '../components/Basket/ItemBasket/ItemBasket';
+import MainLayout from '../layouts';
+import ProtectedRoute from '../routes/PrivateRoute';
+const LayoutBasket = (props) => {
   return (
     <ProtectedRoute>
       <MainLayout>
-        <BasketHeader/>
-        <ItemBasket/>
+        <BasketHeader />
+        <ItemBasket />
       </MainLayout>
     </ProtectedRoute>
-  )
-}
+  );
+};
 
-LayoutBasket.propTypes = {}
+LayoutBasket.propTypes = {};
 
-export default LayoutBasket
+export default LayoutBasket;

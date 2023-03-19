@@ -1,11 +1,11 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { PATHS } from "./LocationPath";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { PATHS } from './LocationPath';
 
 const FETCH_TYPES = {
-  CITIES: "FETCH_CITIES",
-  DISTRICTS: "FETCH_DISTRICTS",
-  WARDS: "FETCH_WARDS",
+  CITIES: 'FETCH_CITIES',
+  DISTRICTS: 'FETCH_DISTRICTS',
+  WARDS: 'FETCH_WARDS',
 };
 
 async function fetchLocationOptions(fetchType, locationId) {
@@ -27,7 +27,7 @@ async function fetchLocationOptions(fetchType, locationId) {
       return [];
     }
   }
-  const locations = (await axios.get(url)).data["data"];
+  const locations = (await axios.get(url)).data['data'];
   return locations.map(({ id, name }) => ({ value: id, label: name }));
 }
 

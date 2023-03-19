@@ -1,8 +1,7 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import OrderDataService from "../../../services/order";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import OrderDataService from '../../../services/order';
 
-const namespace = "orders";
+const namespace = 'orders';
 
 const initialState = {
   loading: null,

@@ -1,11 +1,11 @@
-import Router from "./routes";
+import Router from './routes';
 
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <Router />
       {/* <ToastContainer
           position="top-center"
