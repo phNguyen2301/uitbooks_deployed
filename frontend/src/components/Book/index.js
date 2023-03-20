@@ -204,7 +204,7 @@ export default function BookDetail() {
       dispatch(resetStateReview());
       dispatch(getProductDetails(id));
     }
-  }, [dispatch, error, alert, reviewError, success]);
+  }, [dispatch, error, reviewError, success, id]);
 
   const [Images, setImages] = useState([]);
 

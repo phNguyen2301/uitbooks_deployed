@@ -1,28 +1,27 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { Col, Container, Form, Row, Button, Modal } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { loginRequest, clear } from "../../redux/features/user/userSlice";
+import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap';
+import { BiKey } from 'react-icons/bi';
+import { FaEnvelope } from 'react-icons/fa';
+import { FcHome } from 'react-icons/fc';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Loading from '../../more/Loader';
 import {
-  forgotPassword,
   clearMessage,
-} from "../../redux/features/user/forgotPasswordSlice";
-import { FcHome } from "react-icons/fc";
-import { Link, useNavigate } from "react-router-dom";
-import { FaEnvelope } from "react-icons/fa";
-import Loading from "../../more/Loader";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { BiKey } from "react-icons/bi";
+  forgotPassword,
+} from '../../redux/features/user/forgotPasswordSlice';
+import { clear, loginRequest } from '../../redux/features/user/userSlice';
 
-import "./signIn.scss";
+import './signIn.scss';
 // import * as Yup from "yup";
 
 const SignIn = (props) => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   // modal reset password
   const [show, setShow] = useState(false);
@@ -40,7 +39,7 @@ const SignIn = (props) => {
 
   const navigate = useNavigate();
 
-  const redirect = "/";
+  const redirect = '/';
 
   useEffect(() => {
     if (error) {
@@ -51,7 +50,7 @@ const SignIn = (props) => {
     if (isAuthenticated) {
       navigate(redirect);
     }
-  }, [dispatch, error, isAuthenticated]);
+  }, [dispatch, error, isAuthenticated, navigate]);
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -70,9 +69,9 @@ const SignIn = (props) => {
     handleClose();
     dispatch(forgotPassword({ email }));
   };
-  const handleToRegister = () => {
-    navigate("/signup");
-  };
+  // const handleToRegister = () => {
+  //   navigate("/signup");
+  // };
   useEffect(() => {
     if (status) {
       toast.success(message);
@@ -89,99 +88,99 @@ const SignIn = (props) => {
         <Loading />
       ) : (
         <>
-          <div className="signIn__container">
+          <div className='signIn__container'>
             <Container>
               <Row>
-                <Col md="6" lg="7" className="signIn__container__left">
-                  <div className="title">
-                    <img src="/images/basket/logo.png" alt="logo" />
-                    <div className="title__name">UITBooks</div>
+                <Col md='6' lg='7' className='signIn__container__left'>
+                  <div className='title'>
+                    <img src='/images/basket/logo.png' alt='logo' />
+                    <div className='title__name'>UITBooks</div>
                   </div>
-                  <div className="image">
+                  <div className='image'>
                     <img
-                      src="https://drive.google.com/uc?id=1lL3RkPBS6QbJ8r-hz7VFa536y-jvk0B0"
-                      alt="login-img"
+                      src='https://drive.google.com/uc?id=1lL3RkPBS6QbJ8r-hz7VFa536y-jvk0B0'
+                      alt='login-img'
                     />
                   </div>
                 </Col>
-                <Col md="6" lg="5" className="signIn__container__right">
-                  <div className="signIn__container__right__button">
-                    <button type="button" className="mb-2">
-                      <Link to="/" className="btn-home">
-                        <FcHome className="btn-home-icon mb-1 me-1" />
+                <Col md='6' lg='5' className='signIn__container__right'>
+                  <div className='signIn__container__right__button'>
+                    <button type='button' className='mb-2'>
+                      <Link to='/' className='btn-home'>
+                        <FcHome className='btn-home-icon mb-1 me-1' />
                         Trang chủ
                       </Link>
                     </button>
                   </div>
-                  <Form className="form">
-                    <div className="signIn__title">ĐĂNG NHẬP</div>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form className='form'>
+                    <div className='signIn__title'>ĐĂNG NHẬP</div>
+                    <Form.Group className='mb-3' controlId='formBasicEmail'>
                       {/* <Form.Label>Email</Form.Label> */}
-                      <div className="sigIn__form__row">
-                        <div className="sigIn__form__row__icon">
+                      <div className='sigIn__form__row'>
+                        <div className='sigIn__form__row__icon'>
                           <FaEnvelope />
                         </div>
 
                         <Form.Control
-                          type="email"
-                          placeholder="Nhập email của bạn"
+                          type='email'
+                          placeholder='Nhập email của bạn'
                           onChange={handleEmail}
                         />
                       </div>
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Group className='mb-3' controlId='formBasicPassword'>
                       {/* <Form.Label>Password</Form.Label> */}
-                      <div className="sigIn__form__row">
-                        <div className="sigIn__form__row__icon">
-                          <BiKey className="signIn__icon" />
+                      <div className='sigIn__form__row'>
+                        <div className='sigIn__form__row__icon'>
+                          <BiKey className='signIn__icon' />
                         </div>
                         <Form.Control
-                          type="password"
-                          placeholder="Nhập mật khẩu"
+                          type='password'
+                          placeholder='Nhập mật khẩu'
                           onChange={handlePassword}
                         />
                       </div>
                     </Form.Group>
-                    <div className="d-flex justify-content-center mt-3 signIn__submit">
+                    <div className='d-flex justify-content-center mt-3 signIn__submit'>
                       <Button
-                        type="submit"
-                        className="w-100 signIn__button"
+                        type='submit'
+                        className='w-100 signIn__button'
                         onClick={handleOnSubmit}
                       >
                         Đăng nhập
                       </Button>
                     </div>
-                    <div className="signin-links">
-                      <Link to="/signup" className="toLogin">
+                    <div className='signin-links'>
+                      <Link to='/signup' className='toLogin'>
                         Chưa có tài khoản?
                       </Link>
                       <a
-                        href=""
-                        className="forgotPassword"
+                        href='/'
+                        className='forgotPassword'
                         onClick={handleShow}
                       >
                         Quên mật khẩu?
                       </a>
                     </div>
-                    <div className="sigIn__form__separate">
+                    <div className='sigIn__form__separate'>
                       <hr />
                       <span> Hoặc </span>
                       <hr />
                     </div>
-                    <div className="sigIn__form__row withFacebook">
-                      <div className="sigIn__form__row__icon">
-                        <i className="fa-brands fa-facebook-f"></i>
+                    <div className='sigIn__form__row withFacebook'>
+                      <div className='sigIn__form__row__icon'>
+                        <i className='fa-brands fa-facebook-f'></i>
                       </div>
-                      <div className="sigIn__form__row__name">
+                      <div className='sigIn__form__row__name'>
                         Đăng nhập với Facebook
                       </div>
                     </div>
-                    <div className="sigIn__form__row withGoogle">
-                      <div className="sigIn__form__row__icon">
-                        <i className="fa-brands fa-google-plus-g"></i>
+                    <div className='sigIn__form__row withGoogle'>
+                      <div className='sigIn__form__row__icon'>
+                        <i className='fa-brands fa-google-plus-g'></i>
                       </div>
-                      <div className="sigIn__form__row__name">
+                      <div className='sigIn__form__row__name'>
                         Đăng nhập với Google
                       </div>
                       {/* <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} /> */}
@@ -192,7 +191,7 @@ const SignIn = (props) => {
             </Container>
           </div>
           <ToastContainer
-            position="bottom-center"
+            position='bottom-center'
             autoClose={5000}
             hideProgressBar={false}
             newestOnTop={false}
@@ -209,13 +208,13 @@ const SignIn = (props) => {
             <Modal.Body>
               <Form>
                 <Form.Group
-                  className="mb-3"
-                  controlId="exampleForm.ControlInput1"
+                  className='mb-3'
+                  controlId='exampleForm.ControlInput1'
                 >
                   <Form.Label>Hãy nhập email của bạn</Form.Label>
                   <Form.Control
-                    type="email"
-                    placeholder="name@example.com"
+                    type='email'
+                    placeholder='name@example.com'
                     autoFocus
                     onChange={handleEmail}
                   />
@@ -223,10 +222,10 @@ const SignIn = (props) => {
               </Form>
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
+              <Button variant='secondary' onClick={handleClose}>
                 Đóng
               </Button>
-              <Button variant="primary" onClick={handleSubmitEmail}>
+              <Button variant='primary' onClick={handleSubmitEmail}>
                 Gửi
               </Button>
             </Modal.Footer>

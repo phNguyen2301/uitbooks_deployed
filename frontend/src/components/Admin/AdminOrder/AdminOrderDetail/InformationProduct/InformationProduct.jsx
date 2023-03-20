@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 import "./InformationProduct.scss"
 const InformationProduct = props => {
   // const [quantity, setQuantity] = useState(props.quantity)

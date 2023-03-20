@@ -1,22 +1,21 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllUsers } from "../../../../redux/features/user/allUsersSlice";
+import { DataGrid } from '@mui/x-data-grid';
+import React, { useEffect, useState } from 'react';
+import { BiEdit } from 'react-icons/bi';
+import { FaUserPlus } from 'react-icons/fa';
+import { MdDelete } from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { getAllUsers } from '../../../../redux/features/user/allUsersSlice';
 import {
-  deleteUser,
   clear,
-} from "../../../../redux/features/user/userDetailsSlice";
-import "./UserList.scss";
-import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "./UserData";
-import { Link } from "react-router-dom";
-import { BiEdit } from "react-icons/bi";
-import { MdDelete } from "react-icons/md";
-import { FaUserPlus } from "react-icons/fa";
-import SearchIcon from "@mui/icons-material/Search";
+  deleteUser,
+} from '../../../../redux/features/user/userDetailsSlice';
+import { userColumns } from './UserData';
+import './UserList.scss';
+// import SearchIcon from "@mui/icons-material/Search";
 // import { Button } from "@mui/material";
-import { Form, Modal, Button } from "react-bootstrap";
-import { ToastContainer, toast } from "react-toastify";
+import { Button, Modal } from 'react-bootstrap';
+import { toast, ToastContainer } from 'react-toastify';
 
 const UserList = () => {
   // const [data, setData] = useState(userRows);
@@ -30,7 +29,7 @@ const UserList = () => {
   const dispatch = useDispatch();
   const { loading, users } = useSelector((state) => state.allUsers);
   const { success, message } = useSelector((state) => state.userDetails);
-  const { registerSuccess, user } = useSelector((state) => state.user);
+  // const { registerSuccess, user } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(getAllUsers());
@@ -67,33 +66,33 @@ const UserList = () => {
   };
   const handleDelete = (id) => {
     handleShow();
-    console.log("id delete", id);
+    console.log('id delete', id);
     setIdDelete(id);
     // setData(data.filter((item) => item.id !== id));
   };
   const actionColumn = [
     {
-      field: "action",
-      headerName: "Hành động",
+      field: 'action',
+      headerName: 'Hành động',
       width: 120,
-      headerAlign: "center",
-      align: "center",
+      headerAlign: 'center',
+      align: 'center',
       minWidth: 100,
       maxwidth: 180,
       renderCell: (params) => {
         return (
-          <div className="cellAction">
+          <div className='cellAction'>
             <Link
-              to="/admin-user-edit"
+              to='/admin-user-edit'
               state={{ userId: params.row.userId }}
-              style={{ textDecoration: "none" }}
+              style={{ textDecoration: 'none' }}
             >
-              <div className="editButton">
+              <div className='editButton'>
                 <BiEdit />
               </div>
             </Link>
             <div
-              className="deleteButton"
+              className='deleteButton'
               onClick={() => handleDelete(params.row.userId)}
             >
               <MdDelete />
@@ -104,16 +103,16 @@ const UserList = () => {
     },
   ];
   return (
-    <div className="datatable">
-      <div className="datatableTitle">
+    <div className='datatable'>
+      <div className='datatableTitle'>
         Danh sách người dùng
-        <Link to="/admin-user-new" className="link">
-          <FaUserPlus className="addUser" />
+        <Link to='/admin-user-new' className='link'>
+          <FaUserPlus className='addUser' />
           Thêm mới
         </Link>
       </div>
       <DataGrid
-        className="datagrid grid-auto-columns grid-auto-rows"
+        className='datagrid grid-auto-columns grid-auto-rows'
         rows={data.length > 0 ? data : []}
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
@@ -126,16 +125,16 @@ const UserList = () => {
         </Modal.Header>
         <Modal.Body>Bạn có thực sự muốn xóa người dùng này?</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant='secondary' onClick={handleClose}>
             Huỷ
           </Button>
-          <Button variant="danger" onClick={handleDeleteUser}>
+          <Button variant='danger' onClick={handleDeleteUser}>
             Xoá
           </Button>
         </Modal.Footer>
       </Modal>
       <ToastContainer
-        position="bottom-center"
+        position='bottom-center'
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}

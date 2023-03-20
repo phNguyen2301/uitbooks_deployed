@@ -75,7 +75,7 @@ export default function Topbar(props) {
       }, 3000);
       dispatch(clear());
     }
-  }, [dispatch, isAuthenticated]);
+  }, [dispatch, isAuthenticated, navigate, user, status]);
 
   useEffect(() => {
     if (user) {

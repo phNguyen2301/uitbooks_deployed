@@ -1,15 +1,14 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import Loading from '../../../../more/Loader';
 import {
+  clear,
   getUserDetails,
   updateUserDetails,
-  clear,
-} from "../../../../redux/features/user/userDetailsSlice";
-import { ToastContainer, toast } from "react-toastify";
-import Loading from "../../../../more/Loader";
-import "./UserEdit.scss";
+} from '../../../../redux/features/user/userDetailsSlice';
+import './UserEdit.scss';
 
 function UserEdit() {
   const location = useLocation();
@@ -17,14 +16,14 @@ function UserEdit() {
   const dispatch = useDispatch();
   const { loading, user, success } = useSelector((state) => state.userDetails);
   const userId = location.state.userId;
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [role, setRole] = useState("");
-  const [avatar, setAvatar] = useState("");
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [role, setRole] = useState('');
+  const [avatar, setAvatar] = useState('');
 
   useEffect(() => {
     dispatch(getUserDetails({ userId }));
-  }, [dispatch]);
+  }, [dispatch, userId]);
 
   useEffect(() => {
     if (user) {
@@ -39,19 +38,19 @@ function UserEdit() {
 
   useEffect(() => {
     if (success) {
-      toast.success("Update success, redirect admin page after 3s");
+      toast.success('Update success, redirect admin page after 3s');
       setTimeout(() => {
         navigate(-1);
       }, 3000);
     }
     if (success === false) {
-      toast.error("Update not success");
+      toast.error('Update not success');
     }
     dispatch(clear());
-  }, [dispatch, success]);
+  }, [dispatch, success, navigate]);
 
   const handleAvatarChange = (e) => {
-    if (e.target.name === "avatar") {
+    if (e.target.name === 'avatar') {
       const reader = new FileReader();
 
       reader.onload = () => {
@@ -76,16 +75,16 @@ function UserEdit() {
       {loading ? (
         <Loading />
       ) : (
-        <div className="admin-user-edit-form-infor">
-          <div className="admin-form-infor-heading">
-            <h4 className="mb-4">Chỉnh sửa thông tin</h4>
+        <div className='admin-user-edit-form-infor'>
+          <div className='admin-form-infor-heading'>
+            <h4 className='mb-4'>Chỉnh sửa thông tin</h4>
             <hr />
-            <p className="dark-grey-text mt-4" />
+            <p className='dark-grey-text mt-4' />
           </div>
 
-          <form className="admin-user-edit-form-infor-body p-3" action="">
-            <div className="row">
-              <div className="col-sm">
+          <form className='admin-user-edit-form-infor-body p-3' action=''>
+            <div className='row'>
+              <div className='col-sm'>
                 {/* <div className="row mb-3">
                             <label
                                 htmlFor="form-name-body"
@@ -101,18 +100,18 @@ function UserEdit() {
                                 />
                             </div>
                         </div> */}
-                <div className="row mb-3">
+                <div className='row mb-3'>
                   <label
-                    htmlFor="form-email-body"
-                    className="col-sm-2 col-form-label edit-user-label"
+                    htmlFor='form-email-body'
+                    className='col-sm-2 col-form-label edit-user-label'
                   >
                     Email
                   </label>
-                  <div className="col-sm-10">
+                  <div className='col-sm-10'>
                     <input
-                      type="email"
-                      className="form-control"
-                      id="form-email-body"
+                      type='email'
+                      className='form-control'
+                      id='form-email-body'
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
@@ -148,19 +147,19 @@ function UserEdit() {
                         </div> */}
               </div>
 
-              <div className="col-sm">
-                <div className="row mb-3">
+              <div className='col-sm'>
+                <div className='row mb-3'>
                   <label
-                    htmlFor="form-username-body"
-                    className="col-sm-2 col-form-label edit-user-label"
+                    htmlFor='form-username-body'
+                    className='col-sm-2 col-form-label edit-user-label'
                   >
                     Tên đăng nhập
                   </label>
-                  <div className="col-sm-10">
+                  <div className='col-sm-10'>
                     <input
-                      type="text"
-                      className="form-control"
-                      id="form-username-body"
+                      type='text'
+                      className='form-control'
+                      id='form-username-body'
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                     />
@@ -181,63 +180,63 @@ function UserEdit() {
                                 />
                             </div>
                         </div> */}
-                <div className="row mb-3">
+                <div className='row mb-3'>
                   <label
-                    htmlFor="form-role-body"
-                    className="col-sm-2 col-form-label edit-user-label"
+                    htmlFor='form-role-body'
+                    className='col-sm-2 col-form-label edit-user-label'
                   >
                     Lựa chọn role
                   </label>
-                  <div className="col-sm-10">
+                  <div className='col-sm-10'>
                     <select
-                      className="form-control"
-                      id="form-role-body"
+                      className='form-control'
+                      id='form-role-body'
                       value={role}
                       onChange={(e) => setRole(e.target.value)}
                     >
                       <option selected>Lựa chọn...</option>
-                      <option value="user">User</option>
-                      <option value="admin">Admin</option>
+                      <option value='user'>User</option>
+                      <option value='admin'>Admin</option>
                     </select>
                   </div>
                 </div>
-                <div className="row mb-3">
+                <div className='row mb-3'>
                   <label
-                    htmlFor="form-avatar-body"
-                    className="col-sm-2 col-form-label edit-user-label"
+                    htmlFor='form-avatar-body'
+                    className='col-sm-2 col-form-label edit-user-label'
                   >
                     Chọn Avatar
                   </label>
-                  <div className="col-sm-10">
+                  <div className='col-sm-10'>
                     <input
-                      type="file"
-                      name="avatar"
+                      type='file'
+                      name='avatar'
                       onChange={handleAvatarChange}
                     />
                   </div>
                 </div>
-                <div className="row mb-3">
+                <div className='row mb-3'>
                   <label
-                    htmlFor="form-avatar-body"
-                    className="col-sm-2 col-form-label edit-user-label"
+                    htmlFor='form-avatar-body'
+                    className='col-sm-2 col-form-label edit-user-label'
                   >
                     Avatar preview
                   </label>
-                  <div className="col-sm-10">
+                  <div className='col-sm-10'>
                     {avatar ? (
-                      <img src={avatar} className="avatar" />
+                      <img src={avatar} className='avatar' alt='avatar' />
                     ) : (
-                      "Chưa có Avatar"
+                      'Chưa có Avatar'
                     )}
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="col-auto d-flex justify-content-start">
+            <div className='col-auto d-flex justify-content-start'>
               <button
-                type="submit"
-                className="btn btn-primary"
+                type='submit'
+                className='btn btn-primary'
                 onClick={handleUpdateUserDetails}
               >
                 Update
@@ -245,7 +244,7 @@ function UserEdit() {
             </div>
           </form>
           <ToastContainer
-            position="bottom-center"
+            position='bottom-center'
             autoClose={3000}
             hideProgressBar={false}
             newestOnTop={false}

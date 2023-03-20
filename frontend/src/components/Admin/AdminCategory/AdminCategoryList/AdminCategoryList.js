@@ -1,12 +1,12 @@
-import "./AdminCategoryList.scss";
-import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../datatablesource";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { BiEdit } from "react-icons/bi";
-import { MdDelete, MdCategory } from "react-icons/md";
-import SearchIcon from "@mui/icons-material/Search";
-import { Form, Button } from "react-bootstrap";
+import SearchIcon from '@mui/icons-material/Search';
+import { DataGrid } from '@mui/x-data-grid';
+import { useState } from 'react';
+import { Button } from 'react-bootstrap';
+import { BiEdit } from 'react-icons/bi';
+import { MdCategory, MdDelete } from 'react-icons/md';
+import { Link } from 'react-router-dom';
+import { userColumns, userRows } from '../datatablesource';
+import './AdminCategoryList.scss';
 
 const AdminCategoryList = () => {
   const [data, setData] = useState(userRows);
@@ -17,23 +17,23 @@ const AdminCategoryList = () => {
 
   const actionColumn = [
     {
-      field: "action",
-      headerName: "Hành động",
+      field: 'action',
+      headerName: 'Hành động',
       width: 200,
       minWidth: 200,
       maxwidth: 400,
-      headerAlign: "center",
-      align: "center",
+      headerAlign: 'center',
+      align: 'center',
       renderCell: (params) => {
         return (
-          <div className="cellAction">
-            <Link to="/admin-category-edit" style={{ textDecoration: "none" }}>
-              <div className="viewButton">
+          <div className='cellAction'>
+            <Link to='/admin-category-edit' style={{ textDecoration: 'none' }}>
+              <div className='viewButton'>
                 <BiEdit />
               </div>
             </Link>
             <div
-              className="deleteButton"
+              className='deleteButton'
               onClick={() => handleDelete(params.row.id)}
             >
               <MdDelete />
@@ -44,32 +44,32 @@ const AdminCategoryList = () => {
     },
   ];
   return (
-    <div className="datatable">
-      <div className="col-xl-6 col-lg-5 col-md-6">
-        <form action="#" className="search-header">
-          <div className="input-group w-100">
+    <div className='datatable'>
+      <div className='col-xl-6 col-lg-5 col-md-6'>
+        <form action='#' className='search-header'>
+          <div className='input-group w-100'>
             <input
-              type="text"
-              className="form-control"
-              placeholder="Tìm kiếm"
+              type='text'
+              className='form-control'
+              placeholder='Tìm kiếm'
             />
-            <div className="input-group-append">
-              <Button variant="dark">
+            <div className='input-group-append'>
+              <Button variant='dark'>
                 <SearchIcon />
               </Button>
             </div>
           </div>
         </form>
       </div>
-      <div className="datatableTitle">
+      <div className='datatableTitle'>
         Danh sách thể loại
-        <Link to="/admin-category-new" className="link">
-          <MdCategory className="icon-category-new" />
+        <Link to='/admin-category-new' className='link'>
+          <MdCategory className='icon-category-new' />
           Thêm mới
         </Link>
       </div>
       <DataGrid
-        className="datagrid grid-auto-columns grid-auto-rows"
+        className='datagrid grid-auto-columns grid-auto-rows'
         rows={data}
         columns={userColumns.concat(actionColumn)}
         pageSize={9}

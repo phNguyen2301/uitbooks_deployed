@@ -70,7 +70,7 @@ function useLocationForm(shouldFetchInitialLocation) {
         setState({ ...state, cityOptions: options });
       }
     })();
-  }, []);
+  }, [shouldFetchInitialLocation, state]);
 
   useEffect(() => {
     (async function () {
@@ -81,7 +81,7 @@ function useLocationForm(shouldFetchInitialLocation) {
       );
       setState({ ...state, districtOptions: options });
     })();
-  }, [selectedCity]);
+  }, [selectedCity, state]);
 
   useEffect(() => {
     (async function () {
@@ -92,7 +92,7 @@ function useLocationForm(shouldFetchInitialLocation) {
       );
       setState({ ...state, wardOptions: options });
     })();
-  }, [selectedDistrict]);
+  }, [selectedDistrict, state]);
 
   function onCitySelect(option) {
     if (option !== selectedCity) {

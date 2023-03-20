@@ -27,8 +27,6 @@ import {
 export default function BookCategories() {
   const dispatch = useDispatch();
   let { keyword } = useParams();
-  // console.log(keyword);
-  // console.log(keyword);
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 1000000]);
   const [category, setCategory] = useState();
@@ -56,12 +54,13 @@ export default function BookCategories() {
     setCurrentPage(1);
   };
   useEffect(() => {
+    if (!keyword) keyword = '';
     if (error) {
       // alert(error);
       console.log(error);
       dispatch(clearErrors());
     }
-    if (!keyword) keyword = '';
+
     // console.log(keyword);
     const infoData = {
       keyword: keyword,

@@ -1,22 +1,21 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllOrders } from "../../../../redux/features/order/allOrdersSlice";
+import SearchIcon from '@mui/icons-material/Search';
+import { DataGrid } from '@mui/x-data-grid';
+import moment from 'moment';
+import React, { useEffect, useState } from 'react';
+import { Button, Modal } from 'react-bootstrap';
+import { BiEdit } from 'react-icons/bi';
+import { MdDelete } from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { getAllOrders } from '../../../../redux/features/order/allOrdersSlice';
 import {
-  deleteOrder,
   clear,
-} from "../../../../redux/features/order/orderDetailsSlice";
-import "./OrderTable.scss";
-import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "./datatablesource";
-import { Link } from "react-router-dom";
-import { BiEdit } from "react-icons/bi";
-import { MdDelete } from "react-icons/md";
-import SearchIcon from "@mui/icons-material/Search";
-import { Form, Modal, Button } from "react-bootstrap";
-import moment from "moment";
+  deleteOrder,
+} from '../../../../redux/features/order/orderDetailsSlice';
+import { userColumns } from './datatablesource';
+import './OrderTable.scss';
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast, ToastContainer } from 'react-toastify';
 
 const OrderTable = () => {
   const dispatch = useDispatch();
@@ -25,7 +24,7 @@ const OrderTable = () => {
   const [data, setData] = useState([]);
   // modal
   const [show, setShow] = useState(false);
-  const [idOrderDelete, setIdOrderDelete] = useState("");
+  const [idOrderDelete, setIdOrderDelete] = useState('');
 
   const handleClose = () => {
     setShow(false);
@@ -34,7 +33,7 @@ const OrderTable = () => {
     dispatch(deleteOrder({ id: idOrderDelete }));
     setShow(false);
   };
-  const handleShow = () => setShow(true);
+  // const handleShow = () => setShow(true);
 
   useEffect(() => {
     dispatch(getAllOrders());
@@ -50,20 +49,20 @@ const OrderTable = () => {
             barcode: order._id,
             // employeeName: order.user.name,
             status: order.orderStatus,
-            date: moment(order.createdAt).format("DD/MM/YYYY"),
+            date: moment(order.createdAt).format('DD/MM/YYYY'),
           };
         });
       });
-      console.log("data", data);
+      console.log('data', data);
     }
-  }, [orders]);
+  }, [orders, data]);
   const handleDelete = (id) => {
     setShow(true);
     setIdOrderDelete(id);
   };
   useEffect(() => {
     if (success) {
-      toast.success("delete order success");
+      toast.success('delete order success');
       dispatch(getAllOrders());
     }
     if (success === false) {
@@ -74,24 +73,24 @@ const OrderTable = () => {
 
   const actionColumn = [
     {
-      field: "action",
-      headerName: "Action",
-      headerAlign: "center",
+      field: 'action',
+      headerName: 'Action',
+      headerAlign: 'center',
       width: 100,
       renderCell: (params) => {
         return (
-          <div className="cellAction">
+          <div className='cellAction'>
             <Link
-              to="/admin-order/edit"
-              style={{ textDecoration: "none" }}
+              to='/admin-order/edit'
+              style={{ textDecoration: 'none' }}
               state={{ orderId: params.row.barcode }}
             >
-              <div className="viewButton">
+              <div className='viewButton'>
                 <BiEdit />
               </div>
             </Link>
             <div
-              className="deleteButton"
+              className='deleteButton'
               onClick={() => handleDelete(params.row.barcode)}
             >
               <MdDelete />
@@ -102,31 +101,31 @@ const OrderTable = () => {
     },
   ];
   return (
-    <div className="datatable">
-      <div className="col-xl-6 col-lg-5 col-md-6">
-        <form action="#" className="search-header">
-          <div className="input-group w-100">
+    <div className='datatable'>
+      <div className='col-xl-6 col-lg-5 col-md-6'>
+        <form action='#' className='search-header'>
+          <div className='input-group w-100'>
             <input
-              type="text"
-              className="form-control"
-              placeholder="Tìm kiếm"
+              type='text'
+              className='form-control'
+              placeholder='Tìm kiếm'
             />
-            <div className="input-group-append">
-              <Button variant="dark">
+            <div className='input-group-append'>
+              <Button variant='dark'>
                 <SearchIcon />
               </Button>
             </div>
           </div>
         </form>
       </div>
-      <div className="datatableTitle">
+      <div className='datatableTitle'>
         Quản lý đơn hàng
         {/* <Link to="/users/new" className="link">
           Thêm mới
         </Link> */}
       </div>
       <DataGrid
-        className="datagrid"
+        className='datagrid'
         rows={data ? data : []}
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
@@ -134,7 +133,7 @@ const OrderTable = () => {
         checkboxSelection
       />
       <ToastContainer
-        position="bottom-center"
+        position='bottom-center'
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -152,10 +151,10 @@ const OrderTable = () => {
           Bạn chấc chắn muốn xóa order {idOrderDelete} này!!?
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant='secondary' onClick={handleClose}>
             Đóng
           </Button>
-          <Button variant="danger" onClick={handleDeleteOrder}>
+          <Button variant='danger' onClick={handleDeleteOrder}>
             Xóa
           </Button>
         </Modal.Footer>
