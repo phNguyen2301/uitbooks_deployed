@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import ProductDataService from "../../../services/product";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import ProductDataService from '../../../services/product';
 
-const namespace = "newProduct";
+const namespace = 'newProduct';
 
 const initialState = {
   product: {},
@@ -10,24 +10,11 @@ const initialState = {
 export const createProduct = createAsyncThunk(
   `${namespace}/createProduct`,
   async (productData) => {
-    // const config = {
-    //   headers: { "Content-Type": "application/json" },
-    // };
-
-    // const { data } = await axios.post(
-    //   `https://peaceful-brushlands-80713.herokuapp.com/api/v2/book/new`,
-    //   productData,
-    //   config
-    // );
-    // console.log(data);
-    // return data;
     const data = await ProductDataService.createBook(productData)
       .then((res) => {
-        // console.log(res.data);
         return res.data;
       })
       .catch((err) => {
-        // console.log(err.response.data);
         return err.response.data;
       });
     return data;

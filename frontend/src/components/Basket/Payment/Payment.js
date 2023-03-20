@@ -58,27 +58,31 @@ const Payment = (props) => {
   }, [cartItems, shippingInfo, user]);
 
   const [clientSecret, setClientSecret] = useState('');
-  const handleClick = async () => {
+  const processPayment = async () => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      withCredentials: true,
+    };
+    const { data } = await axios.post(
+      '/api/v2/payment/process',
+      { items: cartItems },
+      config
+    );
+    setClientSecret(data.client_secret);
+    console.log(data);
+    handleShow();
+  };
+  const handleClick = () => {
     if (method === 'COD') {
-      console.log(order);
-      dispatch(createOrder(order));
-      dispatch(clearCart());
-      navigate('/confirm-order');
+      // console.log(order);
+      dispatch(createOrder(order)).then(() => {
+        dispatch(clearCart());
+        navigate('/confirm-order');
+      });
     } else {
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        withCredentials: true,
-      };
-      const { data } = await axios.post(
-        '/api/v2/payment/process',
-        { items: cartItems },
-        config
-      );
-      setClientSecret(data.client_secret);
-      console.log(data);
-      handleShow();
+      processPayment();
     }
   };
 

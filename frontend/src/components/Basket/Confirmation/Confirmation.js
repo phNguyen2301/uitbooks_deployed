@@ -6,7 +6,6 @@ import './confirmation.scss';
 
 const Confirmation = (props) => {
   const { user } = useSelector((state) => state.user);
-
   const { order } = useSelector((state) => state.newOrder);
 
   function getFullAddress(houseAddress, ward, district, city) {

@@ -24,14 +24,7 @@ function AdminBookNew() {
   const { loading, error, success } = useSelector((state) => state.newProduct);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   if (success) {
-  //     alert(success);
-  //     console.log(123);
-  //   } else {
-  //     toast.error(error);
-  //   }
-  // }, [dispatch, loading, error, success]);
+
   useEffect(() => {
     if (error) {
       toast.error(`${error}😭`, {

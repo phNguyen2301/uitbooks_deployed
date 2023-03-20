@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import ProductDataService from "../../../services/product";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import ProductDataService from '../../../services/product';
 
-const namespace = "mostReviewProducts";
+const namespace = 'mostReviewProducts';
 
 const initialState = {
   products: [],
@@ -10,24 +10,11 @@ const initialState = {
 export const getMostReviewProducts = createAsyncThunk(
   `${namespace}/getMostReviewProducts`,
   async () => {
-    // const config = {
-    //   headers: { "Content-Type": "application/json" },
-    // };
-
-    // const { data } = await axios.post(
-    //   `https://peaceful-brushlands-80713.herokuapp.com/api/v2/book/new`,
-    //   productData,
-    //   config
-    // );
-    // console.log(data);
-    // return data;
     const data = await ProductDataService.getMostReviewProducts()
       .then((res) => {
-        // console.log(res.data);
         return res.data;
       })
       .catch((err) => {
-        // console.log(err.response.data);
         return err.response.data;
       });
     return data;

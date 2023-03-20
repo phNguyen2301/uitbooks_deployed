@@ -56,12 +56,10 @@ export default function BookCategories() {
   useEffect(() => {
     if (!keyword) keyword = '';
     if (error) {
-      // alert(error);
       console.log(error);
       dispatch(clearErrors());
     }
 
-    // console.log(keyword);
     const infoData = {
       keyword: keyword,
       price: price,
@@ -71,8 +69,7 @@ export default function BookCategories() {
       currentPage: currentPage,
       ratings: ratings,
     };
-    console.log(category);
-    console.log(author);
+
     dispatch(getProduct(infoData));
   }, [
     dispatch,
@@ -159,6 +156,7 @@ export default function BookCategories() {
                           className='form-check-input ms-1 me-2'
                           type='radio'
                           name='flexRadioDefault'
+                          key={i}
                           value={item}
                           onClick={(e) => {
                             reserHandler();

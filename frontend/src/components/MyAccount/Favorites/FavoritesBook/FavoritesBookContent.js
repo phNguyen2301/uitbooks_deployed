@@ -1,28 +1,25 @@
-import BookItem from "../../../Home/Books/BookItem";
-import "../FavoritesBook/FavoritesBookContent.scss";
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
+import BookItem from '../../../Home/Books/BookItem';
+import '../FavoritesBook/FavoritesBookContent.scss';
 
 const FavoritesBook = () => {
   let { favouriteItems } = useSelector((state) => state.favourite);
-  console.log(favouriteItems);
-
-  // console.log(item.title);
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div style={{ textAlign: 'center' }}>
       {favouriteItems.length === 0 ? (
         <div>
           <img
-            className="empty-wrapper"
-            src="https://drive.google.com/uc?id=1k2nXiRoCsJ2gKuRmL9FoFwkTgSpW_4n_"
-            alt="no item favorites"
+            className='empty-wrapper'
+            src='https://drive.google.com/uc?id=1k2nXiRoCsJ2gKuRmL9FoFwkTgSpW_4n_'
+            alt='no item favorites'
           />
           <p>
             <b>Không có cuốn sách nào trong mục này </b>
           </p>
         </div>
       ) : (
-        <div className="category-books row row-cols-3 ">
+        <div className='category-books row row-cols-3 '>
           {favouriteItems.map((item, index) => {
             return (
               <BookItem

@@ -48,14 +48,12 @@ export default function Interest() {
       <Slider className='interest-books' {...settings}>
         {products &&
           products.map((item, index) => {
-            // console.log(item.images[0].url);
             return (
               <BookItem
                 key={index}
                 id={item._id}
                 title={item.name}
                 author={item.author}
-                //   img={item.images[0].url}
                 img={item.images[0].url}
                 price={item.price}
                 Sold={item.Sold}

@@ -1,8 +1,8 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import AdminService from "../../../services/admin";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import AdminService from '../../../services/admin';
 
 export const orderDetailsSlice = createSlice({
-  name: "orderDetails",
+  name: 'orderDetails',
   initialState: {},
   reducers: {
     clear: (state, action) => {
@@ -39,23 +39,21 @@ export const orderDetailsSlice = createSlice({
 });
 
 export const getOrder = createAsyncThunk(
-  "orderDetails/getOrder",
+  'orderDetails/getOrder',
   async ({ id }) => {
     const response = await AdminService.getOrder(id);
-    // console.log("order detail", response);
     return response.data;
   }
 );
 export const updateStatusOrder = createAsyncThunk(
-  "orderDetails/updateStatusOrder",
+  'orderDetails/updateStatusOrder',
   async ({ id, orderStatus }) => {
     const response = await AdminService.updateOrder(id, orderStatus);
-    // console.log("update status", response);
     return response.data;
   }
 );
 export const deleteOrder = createAsyncThunk(
-  "orderDetails/deleteOrder",
+  'orderDetails/deleteOrder',
   async ({ id }) => {
     const response = await AdminService.deleteOrder(id);
     return response.data;

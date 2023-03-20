@@ -1,10 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const addItemsToFavourite = (id) => async (dispatch, getState) => {
   const { data } = await axios.get(`/api/v2/book/${id}`);
-  // console.log(data);
   dispatch({
-    type: "ADD_TO_FAVOURITE",
+    type: 'ADD_TO_FAVOURITE',
     payload: {
       book: data.book._id,
       name: data.book.name,
@@ -20,12 +19,12 @@ let initialState = {
   favouriteItems: [],
 };
 export const clearFavourite = () => async (dispatch) => {
-  dispatch({ type: "CLEAR_FAVOURITE" });
+  dispatch({ type: 'CLEAR_FAVOURITE' });
 };
 
 export default function favouriteSlice(state = initialState, action) {
   switch (action.type) {
-    case "ADD_TO_FAVOURITE":
+    case 'ADD_TO_FAVOURITE':
       const item = action.payload;
       const isItemExist = state.favouriteItems.find(
         (i) => i.book === item.book
@@ -43,7 +42,7 @@ export default function favouriteSlice(state = initialState, action) {
           favouriteItems: [...state.favouriteItems, item],
         };
       }
-    case "CLEAR_FAVOURITE":
+    case 'CLEAR_FAVOURITE':
       return initialState;
     default:
       return state;

@@ -66,7 +66,7 @@ const UserList = () => {
   };
   const handleDelete = (id) => {
     handleShow();
-    console.log('id delete', id);
+    // console.log('id delete', id);
     setIdDelete(id);
     // setData(data.filter((item) => item.id !== id));
   };

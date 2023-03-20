@@ -47,7 +47,6 @@ export default function RecentReview() {
       <Slider className='recent-review-books' {...settings}>
         {products &&
           products.map((item, index) => {
-            //   console.log(item.images);
             return (
               <BookItem
                 key={index}

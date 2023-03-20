@@ -1,8 +1,8 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import UserDataService from "../../../services/user";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import UserDataService from '../../../services/user';
 
 export const profileUserSlice = createSlice({
-  name: "profileUser",
+  name: 'profileUser',
   initialState: {},
   reducers: {
     clearIsUpdated: (state, action) => {
@@ -45,7 +45,7 @@ export const profileUserSlice = createSlice({
 });
 
 export const updateInfo = createAsyncThunk(
-  "profileUser/updateInfo",
+  'profileUser/updateInfo',
   async ({ name, email, avatar }, { rejectWithValue }) => {
     try {
       const response = await UserDataService.updateInfo(name, email, avatar);
@@ -60,7 +60,7 @@ export const updateInfo = createAsyncThunk(
 );
 
 export const updatePassword = createAsyncThunk(
-  "profileUser/updatePassword",
+  'profileUser/updatePassword',
   async (
     { oldPassword, newPassword, confirmPassword },
     { rejectWithValue }
@@ -76,7 +76,6 @@ export const updatePassword = createAsyncThunk(
       if (!err.response) {
         throw err;
       }
-      console.log(err.response.data);
       return rejectWithValue(err.response.data);
     }
   }

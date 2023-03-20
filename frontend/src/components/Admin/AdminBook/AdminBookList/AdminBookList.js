@@ -279,7 +279,7 @@ const AdminBookList = () => {
                             <RiDeleteBin2Fill
                               className='book-comment-delete-icon ms-5'
                               onClick={(e) => {
-                                console.log(item._id, bookId);
+                                // console.log(item._id, bookId);
                                 deleteReviewHandler(item._id, bookId);
                               }}
                             />

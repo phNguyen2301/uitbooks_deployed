@@ -109,7 +109,7 @@ function AdminBookEdit() {
     images.forEach((image) => {
       myForm.append('images', image);
     });
-    console.log(id);
+    // console.log(id);
     const productData = {
       id: id,
       info: myForm,

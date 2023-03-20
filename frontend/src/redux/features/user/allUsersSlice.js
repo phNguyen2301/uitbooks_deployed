@@ -1,8 +1,8 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import AdminService from "../../../services/admin";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import AdminService from '../../../services/admin';
 
 export const allUsersSlice = createSlice({
-  name: "allUsers",
+  name: 'allUsers',
   initialState: {
     users: [],
   },
@@ -19,16 +19,15 @@ export const allUsersSlice = createSlice({
       .addCase(getAllUsers.rejected, (state, action) => {
         state.loading = false;
         // state.error = action.payload.message
-      })
+      });
   },
 });
 
 export const getAllUsers = createAsyncThunk(
-  "allUsers/getAllUsers",
+  'allUsers/getAllUsers',
   async () => {
-    const response = await AdminService.getAllUsers()
-    console.log('response', response)
-    return response.data
+    const response = await AdminService.getAllUsers();
+    return response.data;
   }
 );
 

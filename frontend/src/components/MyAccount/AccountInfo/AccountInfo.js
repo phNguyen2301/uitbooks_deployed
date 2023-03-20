@@ -9,9 +9,9 @@ import {
   updatePassword,
 } from '../../../redux/features/user/profileUserSlice';
 import { loadUser } from '../../../redux/features/user/userSlice';
-import './AccountInfor.scss';
+import './AccountInfo.scss';
 
-function AccountInfor() {
+function AccountInfo() {
   const dispatch = useDispatch();
 
   const { user, loading } = useSelector((state) => state.user);
@@ -73,7 +73,6 @@ function AccountInfor() {
     } else {
       setAvatar(e.target.value);
     }
-    console.log(avatar);
   };
   return (
     <div className='col-lg-8 my-account-form '>
@@ -275,4 +274,4 @@ function AccountInfor() {
   );
 }
 
-export default AccountInfor;
+export default AccountInfo;

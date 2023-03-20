@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import ProductDataService from "../../../services/product";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import ProductDataService from '../../../services/product';
 
-const namespace = "productsAdmin";
+const namespace = 'productsAdmin';
 
 const initialState = {
   products: [],
@@ -10,18 +10,11 @@ const initialState = {
 export const getProductsAdmin = createAsyncThunk(
   `${namespace}/getProductsAdmin`,
   async () => {
-    // const { data } = await axios.get(
-    //   `https://peaceful-brushlands-80713.herokuapp.com/api/v2/books?keyword=${keyword}&page=${currentPage}`
-    // );
-    // console.log(data);
-    // return data;
     const data = await ProductDataService.getAllBookAdmin()
       .then((res) => {
-        console.log(res.data);
         return res.data;
       })
       .catch((err) => {
-        // console.log(err.response.data);
         return err.response.data;
       });
     return data;

@@ -162,12 +162,9 @@ export default function BookDetail() {
     console.log(myForm);
     dispatch(newReview(myForm));
     setComment('');
-    // );
-    // console.log(user);
-    // setOpen(false);
   };
   // done
-  //   console.log(product);
+
   useEffect(() => {
     dispatch(getProductDetails(id));
   }, [dispatch, id]);
@@ -200,7 +197,6 @@ export default function BookDetail() {
         draggable: true,
         progress: undefined,
       });
-      console.log(success);
       dispatch(resetStateReview());
       dispatch(getProductDetails(id));
     }
@@ -222,15 +218,6 @@ export default function BookDetail() {
     }
   }, [product]);
 
-  // let images = [];
-  // product &&
-  //   product.forEach((item) => {
-  //     images.push({
-  //       original: item.url,
-  //       thumbnail: item.url,
-  //     });
-  //   });
-  console.log({ product });
   return (
     <Fragment>
       {loading ? (

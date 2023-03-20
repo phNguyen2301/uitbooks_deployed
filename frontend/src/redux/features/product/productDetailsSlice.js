@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import ProductDataService from "../../../services/product";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import ProductDataService from '../../../services/product';
 
-const namespace = "productDetails";
+const namespace = 'productDetails';
 
 const initialState = {
   product: {},
@@ -9,18 +9,11 @@ const initialState = {
 export const getProductDetails = createAsyncThunk(
   `${namespace}/getProduct`,
   async (id) => {
-    // const { data } = await axios.get(
-    //   `https://peaceful-brushlands-80713.herokuapp.com/api/v2/book/${id}`
-    // );
-    // console.log(data.book);
-    // return data.book;
     const data = await ProductDataService.getDetailBook(id)
       .then((res) => {
-        // console.log(res.data);
         return res.data;
       })
       .catch((err) => {
-        // console.log(err.response.data);
         return err.response.data;
       });
     return data;

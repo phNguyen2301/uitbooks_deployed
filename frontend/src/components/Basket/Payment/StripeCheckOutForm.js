@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
 import {
   PaymentElement,
-  useStripe,
   useElements,
-} from "@stripe/react-stripe-js";
-import "./stripeCheckOutForm.scss";
-import { useSelector, useDispatch } from "react-redux";
-import { createOrder } from "../../../redux/features/order/newOrderSlice";
-import { clearCart } from "../../../redux/features/cart/cartSlice";
-import { useNavigate } from "react-router-dom";
+  useStripe,
+} from '@stripe/react-stripe-js';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { clearCart } from '../../../redux/features/cart/cartSlice';
+import { createOrder } from '../../../redux/features/order/newOrderSlice';
+import './stripeCheckOutForm.scss';
 
 export default function StripeCheckOutForm(props) {
   const navigate = useNavigate();
@@ -34,17 +34,17 @@ export default function StripeCheckOutForm(props) {
 
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
       switch (paymentIntent.status) {
-        case "succeeded":
-          setMessage("Payment succeeded!");
+        case 'succeeded':
+          setMessage('Payment succeeded!');
           break;
-        case "processing":
-          setMessage("Your payment is processing.");
+        case 'processing':
+          setMessage('Your payment is processing.');
           break;
-        case "requires_payment_method":
+        case 'requires_payment_method':
           //   setMessage("Your payment was not successful, please try again.");
           break;
         default:
-          setMessage("Something went wrong.");
+          setMessage('Something went wrong.');
           break;
       }
     });
@@ -63,7 +63,7 @@ export default function StripeCheckOutForm(props) {
     const result = await stripe.confirmPayment({
       elements,
       // redirect: "if_required",
-      redirect: "if_required",
+      redirect: 'if_required',
     });
     // This point will only be reached if there is an immediate error when
     // confirming the payment. Otherwise, your customer will be redirected to
@@ -71,23 +71,23 @@ export default function StripeCheckOutForm(props) {
     // be redirected to an intermediate site first to authorize the payment, then
     // redirected to the `return_url`.
     if (result.error) {
-      console.log(result);
+      // console.log(result);
       if (
-        result.error.type === "card_error" ||
-        result.error.type === "validation_error"
+        result.error.type === 'card_error' ||
+        result.error.type === 'validation_error'
       ) {
         setMessage(result.error.message);
       } else {
-        setMessage("An unexpected error occured.");
+        setMessage('An unexpected error occured.');
       }
     } else {
-      if (result.paymentIntent.status === "succeeded") {
+      if (result.paymentIntent.status === 'succeeded') {
         const order = {
           orderItems: cartItems,
           user: user,
           shippingInfo: shippingInfo,
           paymentInfo: {
-            method: "Bank",
+            method: 'Bank',
             id: result.paymentIntent.id,
             status: result.paymentIntent.status,
           },
@@ -95,22 +95,22 @@ export default function StripeCheckOutForm(props) {
 
         dispatch(createOrder(order));
         dispatch(clearCart());
-        navigate("/confirm-order");
+        navigate('/confirm-order');
       }
     }
     setIsLoading(false);
   };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
-      <PaymentElement id="payment-element" />
-      <button disabled={isLoading || !stripe || !elements} id="submit">
-        <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
+    <form id='payment-form' onSubmit={handleSubmit}>
+      <PaymentElement id='payment-element' />
+      <button disabled={isLoading || !stripe || !elements} id='submit'>
+        <span id='button-text'>
+          {isLoading ? <div className='spinner' id='spinner'></div> : 'Pay now'}
         </span>
       </button>
       {/* Show any error or success messages */}
-      {message && <div id="payment-message">{message}</div>}
+      {message && <div id='payment-message'>{message}</div>}
     </form>
   );
 }

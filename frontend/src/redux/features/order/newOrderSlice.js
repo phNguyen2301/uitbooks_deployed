@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const namespace = "newOrder";
+const namespace = 'newOrder';
 
 const initialState = {
   loading: null,
@@ -16,15 +16,11 @@ export const createOrder = createAsyncThunk(
     try {
       const config = {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         withCredentials: true,
       };
-      const { data } = await axios.post(
-        "/api/v2/order/new",
-        order,
-        config
-      );
+      const { data } = await axios.post('/api/v2/order/new', order, config);
       return data;
     } catch (err) {
       console.log(err.response.data);

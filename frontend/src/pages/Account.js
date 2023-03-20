@@ -1,12 +1,12 @@
-import React from "react";
-import AccountLayout from "../layouts/AccountLayout";
-import AccountInfor from "../components/MyAccount/AccountInfor/AccountInfor";
+import React from 'react';
+import AccountInfo from '../components/MyAccount/AccountInfo/AccountInfo';
+import AccountLayout from '../layouts/AccountLayout';
 
 function Account() {
   return (
     <>
       <AccountLayout>
-        <AccountInfor />
+        <AccountInfo />
       </AccountLayout>
     </>
   );

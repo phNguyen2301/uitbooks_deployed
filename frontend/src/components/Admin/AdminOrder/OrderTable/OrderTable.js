@@ -53,7 +53,7 @@ const OrderTable = () => {
           };
         });
       });
-      console.log('data', data);
+      // console.log('data', data);
     }
   }, [orders, data]);
   const handleDelete = (id) => {
