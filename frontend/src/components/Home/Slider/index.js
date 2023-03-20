@@ -135,7 +135,6 @@
 //                     </ImgContainer>
 //                 </Slide>
 
-
 //             </Wrapper>
 //             <Arrow direction="right" onClick={() => handleClick("right")}>
 //                 <ArrowRightOutlined />
@@ -147,55 +146,57 @@
 // export default Slider;
 
 import React from 'react';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
 import './Slider.css';
 
 const photos = [
-    {
-        name: 'Photo 1',
-        url: 'https://drive.google.com/uc?id=1AH5LvkZwsuzg8El6iE_kqLBHdaycv4G6'
-    },
-    {
-        name: 'Photo 2',
-        url: 'https://drive.google.com/uc?id=15LF_FMbPjBIsEaXuEfPc18dc91TOYWnC'
-    },
-    {
-        name: 'Photo 3',
-        url: 'https://drive.google.com/uc?id=1L45ZYzZTASQpRxQdOxluD1U33DU54AtH'
-    },
-    {
-        name: 'Photo 4',
-        url: 'https://drive.google.com/uc?id=1-_QyB0Pqoi_hQT8zrIlh-Q6bRmtDBgvg'
-    }
-]
+  {
+    name: 'Photo 1',
+    url: 'https://iili.io/HhxPUhv.jpg',
+  },
+  {
+    name: 'Photo 2',
+    url: 'https://iili.io/HhxPSTJ.png',
+  },
+  {
+    name: 'Photo 3',
+    url: 'https://iili.io/HhxP4Bp.png',
+  },
+  {
+    name: 'Photo 4',
+    url: 'https://iili.io/HhxPgQR.png',
+  },
+];
 export default function Slide() {
-    const settings = {
-        dots: true,
-        fade: true,
-        infinite: true,
-        autoplay: true,
-        autoplaySpeed: 5000,
-        speed: 500,
-        slidesToShow: 1,
-        arrows: true,
-        adaptiveHeight: true,
-        slidesToScroll: 1,
-        pauseOnHover: true,
-        className: 'slides'
-    }
-    return (
-        <div className='slider-container'>
-            <Slider {...settings}>
-                {photos.map((photo, index) => {
-                    return (
-                        <div className='slider-item' key={`slider-item-${index}`}>
-                            <img width='100%' src={photo.url} />
-                        </div>
-                    )
-                })}
-            </Slider>
-        </div>
-    );
+  const settings = {
+    dots: true,
+    fade: true,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    speed: 500,
+    slidesToShow: 1,
+    arrows: true,
+    adaptiveHeight: true,
+    slidesToScroll: 1,
+    pauseOnHover: true,
+    className: 'slides',
+  };
+  return (
+    <div className='slider-container'>
+      <Slider {...settings}>
+        {photos.map((photo, index) => {
+          return (
+            <div className='slider-item' key={`slider-item-${index}`}>
+              <div className='img-container'>
+                <img width='100%' src={photo.url} alt={`slider` + index} />
+              </div>
+            </div>
+          );
+        })}
+      </Slider>
+    </div>
+  );
 }

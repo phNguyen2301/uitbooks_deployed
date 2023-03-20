@@ -1,65 +1,14 @@
-import React from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import { Carousel } from "bootstrap";
-import BookItem from "../Books/BookItem";
-import { Button, Container } from "react-bootstrap";
-import "./BestSeller.css";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getPopularProducts } from "../../../redux/features/product/popularProductsSlice";
-import { Link } from "react-router-dom";
-// const Books = [
-//     {
-//         title: 'Ra Bờ Suối Ngắm Hoa Kèn Hồng',
-//         author: 'Nguyễn Nhật Ánh',
-//         img: 'https://drive.google.com/uc?id=1evMkN-8Yzk2FL51iREJZXawvg1-CpMVc',
-//         price: '100.500 đ'
-//     },
-//     {
-//         title: 'Làm Bạn Với Bầu Trời',
-//         author: 'Nguyễn Nhật Ánh',
-//         img: 'https://drive.google.com/uc?id=1f81BHRFLAE1yEddPLdRUJO3jXJ2_SQPS',
-//         price: '150.500 đ'
-//     },
-//     {
-//         title: 'Chúc Một Ngày Tốt Lành',
-//         author: 'Nguyễn Nhật Ánh',
-//         img: 'https://drive.google.com/uc?id=1qiStbESBEiBavZGEgTvcvoI7UHW9MKEy',
-//         price: '90.500 đ'
-//     },
-//     {
-//         title: 'Ngày Xưa Có Một Chuyện Tình',
-//         author: 'Nguyễn Nhật Ánh',
-//         img: 'https://drive.google.com/uc?id=1iljqkkb1hT_FPSzkZJc0y5XtwNfzNL1K',
-//         price: '111.500 đ'
-//     },
-//     {
-//         title: 'Tàn Lửa',
-//         author: 'Shizukui Shusuke',
-//         img: 'https://drive.google.com/uc?id=1SNwfEQMgarJBqvFH2ECYpEIxPGdGR1FG',
-//         price: '111.500 đ'
-//     },
-//     {
-//         title: 'Cảm Ơn Người Lớn',
-//         author: 'Nguyễn Nhật Ánh',
-//         img: 'https://drive.google.com/uc?id=1SFgK4XIgGATHp0hauLyMf_Ccbs-sDuEj',
-//         price: '111.500 đ'
-//     },
-//     {
-//         title: 'Chuyện Kể Rằng Có Nàng Và Tôi',
-//         author: 'Nhiều tác giả',
-//         img: 'https://drive.google.com/uc?id=15eeAUNLISuTCIDK_YRiSQwCWglfJbHZW',
-//         price: '111.500 đ'
-//     },
-//     {
-//         title: 'Cố Định Một Đám Mây',
-//         author: 'Nguyễn Ngọc Tư',
-//         img: 'https://drive.google.com/uc?id=1DRQUMkxDzs4ldQwJ0X746gDL9boMVW_Q',
-//         price: '111.500 đ'
-//     }
-// ]
+import React, { useEffect } from 'react';
+import { Button, Container } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import { getPopularProducts } from '../../../redux/features/product/popularProductsSlice';
+import BookItem from '../Books/BookItem';
+import './BestSeller.css';
+
 export default function BestSeller() {
   const { error, products } = useSelector((state) => state.popularProducts);
   const dispatch = useDispatch();
@@ -91,12 +40,12 @@ export default function BestSeller() {
     ],
   };
   return (
-    <Container className="best-seller-container">
-      <div className="best-seller-title">
+    <Container className='best-seller-container'>
+      <div className='best-seller-title'>
         <h3>Bán chạy nhất</h3>
-        <img src="https://drive.google.com/uc?id=1ixJdLtQ9ZoQQ7b6kINOma4fX015al0Oh" />
+        <img src='https://iili.io/HhzQWmX.gif' alt='best-seller' />
       </div>
-      <Slider className="best-seller-books" {...settings}>
+      <Slider className='best-seller-books' {...settings}>
         {products &&
           products.map((item, index) => {
             // console.log(item.images[0].url);
@@ -115,9 +64,9 @@ export default function BestSeller() {
             );
           })}
       </Slider>
-      <div className="text-center mt-0">
-        <Link to="/books">
-          <Button className="see-more" variant="primary">
+      <div className='text-center mt-0'>
+        <Link to='/books'>
+          <Button className='see-more' variant='primary'>
             Xem thêm &rarr;
           </Button>
         </Link>
