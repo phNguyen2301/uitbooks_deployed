@@ -67,10 +67,10 @@ function useLocationForm(shouldFetchInitialLocation) {
         setState(initialData);
       } else {
         const options = await fetchLocationOptions(FETCH_TYPES.CITIES);
-        setState({ ...state, cityOptions: options });
+        setState((prevState) => ({ ...prevState, cityOptions: options }));
       }
     })();
-  }, []);
+  }, [shouldFetchInitialLocation]);
 
   useEffect(() => {
     (async function () {
@@ -79,7 +79,7 @@ function useLocationForm(shouldFetchInitialLocation) {
         FETCH_TYPES.DISTRICTS,
         selectedCity.value
       );
-      setState({ ...state, districtOptions: options });
+      setState((prevState) => ({ ...prevState, districtOptions: options }));
     })();
   }, [selectedCity]);
 
@@ -90,7 +90,7 @@ function useLocationForm(shouldFetchInitialLocation) {
         FETCH_TYPES.WARDS,
         selectedDistrict.value
       );
-      setState({ ...state, wardOptions: options });
+      setState((prevState) => ({ ...prevState, wardOptions: options }));
     })();
   }, [selectedDistrict]);
 

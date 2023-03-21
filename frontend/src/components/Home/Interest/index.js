@@ -13,8 +13,9 @@ export default function Interest() {
   const { error, products } = useSelector((state) => state.ratedProducts);
   const dispatch = useDispatch();
   useEffect(() => {
+    if (error) console.log(error);
     dispatch(getRatedProducts());
-  }, [dispatch]);
+  }, [dispatch, error]);
   let settings = {
     infinite: false,
     speed: 1000,

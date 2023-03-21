@@ -46,13 +46,10 @@ const AdminBookList = () => {
   const { error: deleteError, isDeleted } = useSelector(
     (state) => state.product
   );
-  const { error: reviewError, reviews } = useSelector(
-    (state) => state.productReviews
-  );
+  const { reviews } = useSelector((state) => state.productReviews);
   const { error: reviewDeleteError, isDeleted: isDeletedReview } = useSelector(
     (state) => state.review
   );
-  // console.log(reviewError, reviews);
   const deleteProductHandler = (id) => {
     dispatch(deleteProduct(id));
   };
@@ -99,7 +96,15 @@ const AdminBookList = () => {
   }, [dispatch]);
   useEffect(() => {
     if (error) {
-      alert(error);
+      toast.error(`${error}`, {
+        position: 'bottom-center',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       dispatch(clearErrors());
     }
     if (deleteError && isDeleted) {

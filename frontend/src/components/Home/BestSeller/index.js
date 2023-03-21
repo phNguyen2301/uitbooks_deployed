@@ -13,8 +13,9 @@ export default function BestSeller() {
   const { error, products } = useSelector((state) => state.popularProducts);
   const dispatch = useDispatch();
   useEffect(() => {
+    if (error) console.log(error);
     dispatch(getPopularProducts());
-  }, [dispatch]);
+  }, [dispatch, error]);
   let settings = {
     infinite: false,
     speed: 1000,

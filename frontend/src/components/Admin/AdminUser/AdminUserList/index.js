@@ -1,10 +1,11 @@
 import { DataGrid } from '@mui/x-data-grid';
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { BiEdit } from 'react-icons/bi';
 import { FaUserPlus } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Loading from '../../../../more/Loader';
 import { getAllUsers } from '../../../../redux/features/user/allUsersSlice';
 import {
   clear,
@@ -58,7 +59,7 @@ const UserList = () => {
       toast.error(message);
     }
     dispatch(clear());
-  }, [dispatch, success]);
+  }, [dispatch, success, message]);
 
   const handleDeleteUser = () => {
     dispatch(deleteUser({ id: idDelete }));
@@ -103,48 +104,54 @@ const UserList = () => {
     },
   ];
   return (
-    <div className='datatable'>
-      <div className='datatableTitle'>
-        Danh sách người dùng
-        <Link to='/admin-user-new' className='link'>
-          <FaUserPlus className='addUser' />
-          Thêm mới
-        </Link>
-      </div>
-      <DataGrid
-        className='datagrid grid-auto-columns grid-auto-rows'
-        rows={data.length > 0 ? data : []}
-        columns={userColumns.concat(actionColumn)}
-        pageSize={9}
-        rowsPerPageOptions={[9]}
-        checkboxSelection
-      />
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Xoá Người Dùng</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Bạn có thực sự muốn xóa người dùng này?</Modal.Body>
-        <Modal.Footer>
-          <Button variant='secondary' onClick={handleClose}>
-            Huỷ
-          </Button>
-          <Button variant='danger' onClick={handleDeleteUser}>
-            Xoá
-          </Button>
-        </Modal.Footer>
-      </Modal>
-      <ToastContainer
-        position='bottom-center'
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-    </div>
+    <Fragment>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className='datatable'>
+          <div className='datatableTitle'>
+            Danh sách người dùng
+            <Link to='/admin-user-new' className='link'>
+              <FaUserPlus className='addUser' />
+              Thêm mới
+            </Link>
+          </div>
+          <DataGrid
+            className='datagrid grid-auto-columns grid-auto-rows'
+            rows={data.length > 0 ? data : []}
+            columns={userColumns.concat(actionColumn)}
+            pageSize={9}
+            rowsPerPageOptions={[9]}
+            checkboxSelection
+          />
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Xoá Người Dùng</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Bạn có thực sự muốn xóa người dùng này?</Modal.Body>
+            <Modal.Footer>
+              <Button variant='secondary' onClick={handleClose}>
+                Huỷ
+              </Button>
+              <Button variant='danger' onClick={handleDeleteUser}>
+                Xoá
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          <ToastContainer
+            position='bottom-center'
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+        </div>
+      )}
+    </Fragment>
   );
 };
 

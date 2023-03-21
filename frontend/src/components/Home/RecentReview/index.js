@@ -3,6 +3,7 @@ import { Button, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
+import { toast, ToastContainer } from 'react-toastify';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import { getMostReviewProducts } from '../../../redux/features/product/mostReviewProductsSlice';
@@ -37,8 +38,19 @@ export default function RecentReview() {
   const { error, products } = useSelector((state) => state.mostReviewProducts);
   const dispatch = useDispatch();
   useEffect(() => {
+    if (error) {
+      toast.error(`${error}`, {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
     dispatch(getMostReviewProducts());
-  }, [dispatch]);
+  }, [dispatch, error]);
   return (
     <Container className='recent-review-container'>
       <div className='recent-review-title'>
@@ -69,6 +81,17 @@ export default function RecentReview() {
           </Button>
         </Link>
       </div>
+      <ToastContainer
+        position='bottom-center'
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Container>
   );
 }

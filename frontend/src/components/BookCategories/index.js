@@ -26,11 +26,10 @@ import {
 
 export default function BookCategories() {
   const dispatch = useDispatch();
-  let { keyword } = useParams();
+  let { keyword = '' } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 1000000]);
   const [category, setCategory] = useState();
-  const [ratings, setRatings] = useState(0);
   const [author, setAuthor] = useState();
   const [publisher, setPublisher] = useState();
   // pagination
@@ -54,7 +53,6 @@ export default function BookCategories() {
     setCurrentPage(1);
   };
   useEffect(() => {
-    if (!keyword) keyword = '';
     if (error) {
       console.log(error);
       dispatch(clearErrors());
@@ -67,7 +65,7 @@ export default function BookCategories() {
       publisher: publisher,
       category: category,
       currentPage: currentPage,
-      ratings: ratings,
+      ratings: 0,
     };
 
     dispatch(getProduct(infoData));
@@ -77,8 +75,6 @@ export default function BookCategories() {
     currentPage,
     price,
     category,
-    ratings,
-    alert,
     error,
     author,
     publisher,
@@ -119,6 +115,7 @@ export default function BookCategories() {
                             type='radio'
                             name='flexRadioDefault'
                             value={item}
+                            key={i}
                             onClick={(e) => {
                               reserHandler();
                               setCategory(e.target.value);
@@ -200,6 +197,7 @@ export default function BookCategories() {
                           type='radio'
                           name='flexRadioDefault'
                           value={item}
+                          key={i}
                           onClick={(e) => {
                             if (i === 0) priceData[i - 1] = 0;
                             setPrice([
@@ -237,6 +235,7 @@ export default function BookCategories() {
                           type='radio'
                           name='flexRadioDefault'
                           value={item}
+                          key={i}
                           onClick={(e) => setPublisher(e.target.value)}
                         />
                         {item}

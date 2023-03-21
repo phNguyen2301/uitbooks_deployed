@@ -1,15 +1,14 @@
 {
-  "name": "heroku_app",
+  "name": "uitbooks",
   "version": "1.0.0",
   "description": "",
-  "main": "backend/index.js",
+  "main": "/backend/index.js",
   "type": "module",
   "scripts": {
     "test": "jest",
     "frontend": "cd frontend && npm start",
     "backend": "nodemon backend/index.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run backend\" \"npm run frontend\"",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
+    "dev": "concurrently --kill-others-on-fail \"npm run backend\" \"npm run frontend\""
   },
   "keywords": [],
   "author": "",

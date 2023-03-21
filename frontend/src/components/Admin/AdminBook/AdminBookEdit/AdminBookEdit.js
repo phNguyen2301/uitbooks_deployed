@@ -54,13 +54,19 @@ function AdminBookEdit() {
       setPublisher(product.publisher);
     }
     if (error) {
-      alert(error);
+      toast.error(`${error}`, {
+        position: 'bottom-center',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       dispatch(clearErrorsDetails());
     }
 
     if (updateError) {
-      // console.log(updateError);
-      // alert(updateError);
       toast.error(`${updateError}`, {
         position: 'bottom-center',
         autoClose: 3000,
@@ -73,7 +79,6 @@ function AdminBookEdit() {
       dispatch(clearErrorsDeleted());
     }
     if (isUpdated) {
-      // alert("book Updated Successfully");
       toast.success('Cập nhật sách thành công! 🎊', {
         position: 'bottom-center',
         autoClose: 3000,

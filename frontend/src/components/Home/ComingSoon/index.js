@@ -37,8 +37,9 @@ export default function ComingSoon() {
   const { error, products } = useSelector((state) => state.newsProducts);
   const dispatch = useDispatch();
   useEffect(() => {
+    if (error) console.log(error);
     dispatch(getNewsProducts());
-  }, [dispatch]);
+  }, [dispatch, error]);
   return (
     <Container className='coming-soon-container'>
       <div className='coming-soon-title'>

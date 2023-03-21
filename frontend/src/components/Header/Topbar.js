@@ -108,7 +108,11 @@ export default function Topbar(props) {
               </Navbar.Brand>
             </div>
             <div className='col-xl-6 col-lg-5 col-md-6'>
-              <form action='#' className='search-header'>
+              <form
+                action='#'
+                className='search-header'
+                onSubmit={handleSearch}
+              >
                 <div className='input-group w-100'>
                   <input
                     type='text'
@@ -118,7 +122,7 @@ export default function Topbar(props) {
                     onChange={(e) => setKeyword(e.target.value)}
                   />
                   <div className='input-group-append'>
-                    <Button variant='dark' onClick={handleSearch}>
+                    <Button variant='dark' type='submit'>
                       <SearchIcon /> Tìm kiếm
                     </Button>
                   </div>
